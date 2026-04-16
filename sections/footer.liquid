@@ -1,0 +1,96 @@
+<footer class="site-footer">
+  <div class="footer-top">
+    <div>
+      <p class="f-brand">{{ shop.name | default: 'Zuuma' }}</p>
+      <p class="f-tagline">{{ settings.footer_tagline }}</p>
+      <p class="f-desc">{{ section.settings.description }}</p>
+    </div>
+
+    <div class="f-col">
+      <h4>{{ section.settings.col_1_title }}</h4>
+      <ul>
+        {% for b in section.blocks %}
+          {% if b.type == 'nav_link' and b.settings.column == 'first' %}
+            <li><a href="{{ b.settings.url }}">{{ b.settings.label }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="f-col">
+      <h4>{{ section.settings.col_2_title }}</h4>
+      <ul>
+        {% for b in section.blocks %}
+          {% if b.type == 'nav_link' and b.settings.column == 'second' %}
+            <li><a href="{{ b.settings.url }}">{{ b.settings.label }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  {%- assign current_year = 'now' | date: '%Y' -%}
+  <div class="footer-bottom">
+    <span class="f-copy">{{ 'sections.footer.copyright_html' | t: year: current_year }}</span>
+    <span class="f-made">Made in <span>Berlin</span></span>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Brand description",
+      "default": "Handmade and numbered in Berlin. Designed for function first, fashion second. One bag — for everything."
+    },
+    {
+      "type": "text",
+      "id": "col_1_title",
+      "label": "Column 1 title",
+      "default": "Navigate"
+    },
+    {
+      "type": "text",
+      "id": "col_2_title",
+      "label": "Column 2 title",
+      "default": "Info"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nav_link",
+      "name": "Nav link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "url", "id": "url", "label": "URL" },
+        {
+          "type": "select",
+          "id": "column",
+          "label": "Column",
+          "options": [
+            { "value": "first", "label": "Column 1" },
+            { "value": "second", "label": "Column 2" }
+          ],
+          "default": "first"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "nav_link", "settings": { "label": "The Bag",   "url": "#bag-product", "column": "first" } },
+      { "type": "nav_link", "settings": { "label": "Schürze",   "url": "#apron-product", "column": "first" } },
+      { "type": "nav_link", "settings": { "label": "Prints",    "url": "#prints", "column": "first" } },
+      { "type": "nav_link", "settings": { "label": "About",     "url": "#about", "column": "first" } },
+      { "type": "nav_link", "settings": { "label": "FAQ",       "url": "#faq", "column": "first" } },
+      { "type": "nav_link", "settings": { "label": "Shipping & Returns", "url": "/policies/shipping-policy", "column": "second" } },
+      { "type": "nav_link", "settings": { "label": "Care Guide", "url": "#faq", "column": "second" } },
+      { "type": "nav_link", "settings": { "label": "Contact",   "url": "/pages/contact", "column": "second" } },
+      { "type": "nav_link", "settings": { "label": "Instagram", "url": "https://instagram.com", "column": "second" } }
+    ]
+  }
+}
+{% endschema %}

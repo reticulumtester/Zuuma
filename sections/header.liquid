@@ -1,0 +1,45 @@
+<header class="site-header" data-site-header>
+  <a class="nav-logo" href="{{ routes.root_url }}">{{ shop.name | default: 'Zuuma' }}</a>
+  <ul class="nav-links">
+    {% for link in section.blocks %}
+      {% case link.type %}
+        {% when 'link' %}
+          <li><a href="{{ link.settings.url }}">{{ link.settings.label }}</a></li>
+        {% when 'cta' %}
+          <li><a class="nav-cta" href="{{ link.settings.url }}">{{ link.settings.label }}</a></li>
+      {% endcase %}
+    {% else %}
+      <li><a href="#bag-product">The Bag</a></li>
+      <li><a href="#apron-product">Schürze</a></li>
+      <li><a href="#prints">Prints</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a class="nav-cta" href="{{ routes.cart_url }}">Shop</a></li>
+    {% endfor %}
+  </ul>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Nav link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "The Bag" },
+        { "type": "url", "id": "url", "label": "URL" }
+      ]
+    },
+    {
+      "type": "cta",
+      "name": "CTA button",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Shop" },
+        { "type": "url", "id": "url", "label": "URL" }
+      ]
+    }
+  ]
+}
+{% endschema %}

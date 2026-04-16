@@ -1,0 +1,263 @@
+{
+  "sections": {
+    "hero-bag": {
+      "type": "hero-bag",
+      "settings": {
+        "eyebrow": "Berlin · Handmade · Numbered",
+        "headline": "One Bag",
+        "headline_em": "Every Day.",
+        "description": "Empty it lies light against your body. Full it carries everything — without protest, without pulling.",
+        "cta_label": "Discover the Bag",
+        "cta_link": "#bag-product",
+        "secondary_label": "Our Story",
+        "secondary_link": "#about"
+      }
+    },
+    "bag-features": {
+      "type": "bag-features",
+      "settings": {
+        "eyebrow": "Anatomy of the bag",
+        "headline": "Built to",
+        "headline_em": "carry it all."
+      },
+      "blocks": {
+        "feat-1": {
+          "type": "callout",
+          "settings": {
+            "label": "Volume",
+            "value": "30 litres",
+            "description": "Laptop, yoga mat, groceries, beach, paints — whatever the day demands.",
+            "x": 28,
+            "y": 32
+          }
+        },
+        "feat-2": {
+          "type": "callout",
+          "settings": {
+            "label": "Strap",
+            "value": "5 cm · Crossbody",
+            "description": "Wide strap, extremely durable. Worn crossbody, seven kilos feel like nothing.",
+            "x": 62,
+            "y": 18
+          }
+        },
+        "feat-3": {
+          "type": "callout",
+          "settings": {
+            "label": "Inner label",
+            "value": "Numbered in Berlin",
+            "description": "The turquoise inner label is the only concession to colour. Every bag is numbered by hand.",
+            "x": 70,
+            "y": 56
+          }
+        },
+        "feat-4": {
+          "type": "callout",
+          "settings": {
+            "label": "Dimensions",
+            "value": "52 × 60 cm · 400 g",
+            "description": "Leer liegt sie schlank am Körper. Voll trägt sie bis zu 10 kg ohne zu klagen.",
+            "x": 22,
+            "y": 68
+          }
+        }
+      },
+      "block_order": ["feat-1", "feat-2", "feat-3", "feat-4"]
+    },
+    "bag-product": {
+      "type": "bag-product",
+      "settings": {
+        "eyebrow": "The Bag · Zuuma",
+        "title": "Zuuma",
+        "title_em": "Bag",
+        "copy": "Made from 100 % cotton canvas, deep black, built to last. It holds 30 litres and carries up to 10 kg — laptop, yoga mat, groceries, beach essentials, whatever your day demands. Worn crossbody, it distributes the weight so effortlessly that seven kilos feel like nothing.",
+        "note": "Free shipping · Handmade & numbered · Washable to 30°",
+        "cta_label": "Add to Cart",
+        "cta_link": "/cart"
+      }
+    },
+    "media-statement": {
+      "type": "media-statement",
+      "settings": {
+        "watermark": "Zuuma",
+        "caption": "Campaign · Spring 2025"
+      }
+    },
+    "marquee": {
+      "type": "marquee",
+      "settings": {
+        "items": "One Bag Every Day · Handmade in Berlin · 100% Cotton Canvas · 30 Litres · 400 g · Every piece numbered"
+      }
+    },
+    "apron-features": {
+      "type": "apron-features",
+      "settings": {
+        "eyebrow": "Also new",
+        "headline": "The Zuuma",
+        "headline_em": "Schürze."
+      },
+      "blocks": {
+        "a-1": {
+          "type": "callout",
+          "settings": {
+            "label": "Material",
+            "value": "Heavy canvas",
+            "description": "Same honest canvas as the bag — built to be worked in.",
+            "x": 34,
+            "y": 26
+          }
+        },
+        "a-2": {
+          "type": "callout",
+          "settings": {
+            "label": "Fit",
+            "value": "One size, every body",
+            "description": "Adjustable neck and long waist ties. Fits tall, short, and every body in between.",
+            "x": 66,
+            "y": 44
+          }
+        },
+        "a-3": {
+          "type": "callout",
+          "settings": {
+            "label": "Detail",
+            "value": "Turquoise label",
+            "description": "Numbered, signed, made in Berlin. Same signature as the bag.",
+            "x": 50,
+            "y": 72
+          }
+        }
+      },
+      "block_order": ["a-1", "a-2", "a-3"]
+    },
+    "apron-product": {
+      "type": "apron-product",
+      "settings": {
+        "eyebrow": "The Schürze · Zuuma",
+        "title": "Zuuma",
+        "title_em": "Schürze",
+        "copy": "From kitchen to studio. Heavy canvas, long ties, deep pockets. The apron we wanted for ourselves — handmade in Berlin, numbered like the bag.",
+        "note": "Limited run · Numbered · Made in Berlin",
+        "cta_label": "Add to Cart",
+        "cta_link": "/cart"
+      }
+    },
+    "prints": {
+      "type": "prints",
+      "settings": {
+        "title": "Also from",
+        "title_em": "Zuuma",
+        "link_label": "All prints →",
+        "link_url": "/collections/prints"
+      },
+      "blocks": {
+        "p-1": {
+          "type": "print",
+          "settings": {
+            "name": "Palm Noir",
+            "category": "Art Print · Unlimited",
+            "sub": "Printed on demand · Prodigi",
+            "link": "/products/palm-noir"
+          }
+        },
+        "p-2": {
+          "type": "print",
+          "settings": {
+            "name": "Nocturnal Garden",
+            "category": "Art Print · Unlimited",
+            "sub": "Printed on demand · Prodigi",
+            "link": "/products/nocturnal-garden"
+          }
+        },
+        "p-3": {
+          "type": "print-limited",
+          "settings": {
+            "name": "Untitled No. 3",
+            "category": "Art Print · Limited Edition",
+            "sub": "50 pieces worldwide",
+            "note": "Available soon",
+            "cta_label": "Notify Me",
+            "cta_link": "#"
+          }
+        }
+      },
+      "block_order": ["p-1", "p-2", "p-3"]
+    },
+    "about": {
+      "type": "about",
+      "settings": {
+        "headline": "From film",
+        "headline_em": "to form.",
+        "origin": "Handmade & numbered in Berlin",
+        "copy_1": "We come from the film industry, where our mentors always taught us that design should serve function — a good idea is recognisable by one simple thing: it works.",
+        "quote": "Would I carry this bag myself — with maximum standards for function and design?",
+        "copy_2": "The Zuuma Bag was born from a real frustration. After many tests, we found the balance. One bag for all of it. Minimal by design. Built to last. We speak to everyone and exclude no one."
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "eyebrow": "FAQ",
+        "heading": "Questions &",
+        "heading_em": " Answers"
+      },
+      "blocks": {
+        "q1": {
+          "type": "qa",
+          "settings": {
+            "question": "How much can the Zuuma Bag carry?",
+            "answer": "The bag holds 30 litres and is designed to carry up to 10 kg. The 5 cm wide strap is extremely durable — worn crossbody, 7 kg feels like nothing. Honestly, your body will give out before the bag does."
+          }
+        },
+        "q2": {
+          "type": "qa",
+          "settings": {
+            "question": "Is it suitable for all body types and heights?",
+            "answer": "Yes — by design. The strap adjusts to 132 cm and works equally well for people over 1.80 m and those much shorter. The bag sits the same on everyone. That's intentional math, not coincidence."
+          }
+        },
+        "q3": {
+          "type": "qa",
+          "settings": {
+            "question": "Can I fold it when not in use?",
+            "answer": "Absolutely. Unlike most tote bags of this size, the Zuuma Bag folds flat and fits inside a handbag or a bicycle basket. It's designed to be part of your everyday — not an obstacle to it."
+          }
+        },
+        "q4": {
+          "type": "qa",
+          "settings": {
+            "question": "How do I care for the bag?",
+            "answer": "The screen print is washable up to 30 degrees. We recommend washing inside out on a gentle cycle. The 100% cotton canvas gets better with age — it's built for real life use, not careful handling."
+          }
+        },
+        "q5": {
+          "type": "qa",
+          "settings": {
+            "question": "Are the prints shipped separately?",
+            "answer": "Yes. Palm Noir, Nocturnal Garden and the upcoming limited edition are printed and shipped on demand via Prodigi — ensuring the highest print quality and a lower environmental footprint."
+          }
+        },
+        "q6": {
+          "type": "qa",
+          "settings": {
+            "question": "Will there be more colours or editions?",
+            "answer": "Yes. We're exploring olive green as the next colour. Future editions may also be tied to specific events or charity collaborations. Each new colour will justify itself — by design, not marketing."
+          }
+        }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6"]
+    }
+  },
+  "order": [
+    "hero-bag",
+    "bag-features",
+    "bag-product",
+    "media-statement",
+    "marquee",
+    "apron-features",
+    "apron-product",
+    "prints",
+    "about",
+    "faq"
+  ]
+}

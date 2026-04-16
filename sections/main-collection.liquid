@@ -1,0 +1,32 @@
+<section id="collection" class="pdp">
+  <div class="prints-head">
+    <h2 class="about-headline" style="font-size: clamp(40px,4.5vw,62px);">{{ collection.title }}</h2>
+  </div>
+  <div class="prints-grid" style="background: transparent;">
+    {% for product in collection.products %}
+      <a class="print-card" href="{{ product.url }}" style="background: #ededea;">
+        <div class="print-card-img">
+          {% if product.featured_image %}
+            {{ product.featured_image | image_url: width: 900 | image_tag:
+               sizes: '(min-width: 960px) 33vw, 100vw',
+               widths: '400,600,900',
+               alt: product.title,
+               loading: 'lazy' }}
+          {% endif %}
+        </div>
+        <div class="print-info" style="background: #ededea;">
+          <p class="print-cat" style="color: rgba(0,0,0,0.35);">{{ product.vendor | default: 'Zuuma' }}</p>
+          <p class="print-name" style="color: var(--black);">{{ product.title }}</p>
+          <p class="print-sub" style="color: rgba(0,0,0,0.4);">{{ product.price | money }}</p>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection",
+  "settings": []
+}
+{% endschema %}

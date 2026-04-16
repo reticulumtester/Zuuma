@@ -1,0 +1,79 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Zuuma",
+    "theme_version": "1.0.0",
+    "theme_author": "House of Zuuma",
+    "theme_documentation_url": "https://github.com/reticulumtester/zuuma",
+    "theme_support_url": "https://github.com/reticulumtester/zuuma/issues"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background",
+        "default": "#f9f8f6"
+      },
+      {
+        "type": "color",
+        "id": "color_foreground",
+        "label": "Foreground",
+        "default": "#0c0c0c"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent (turquoise label)",
+        "default": "#4fcdc4"
+      },
+      {
+        "type": "color",
+        "id": "color_warm_grey",
+        "label": "Warm grey",
+        "default": "#e8e5e0"
+      },
+      {
+        "type": "color",
+        "id": "color_mid",
+        "label": "Mid text",
+        "default": "#b0aba3"
+      }
+    ]
+  },
+  {
+    "name": "Motion",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_scrollytelling",
+        "label": "Enable GSAP scrollytelling",
+        "info": "Turn off to debug layout without pinning or smooth scroll.",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_smooth_scroll",
+        "label": "Enable Lenis smooth scroll",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      {
+        "type": "url",
+        "id": "social_instagram",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "text",
+        "id": "footer_tagline",
+        "label": "Footer tagline",
+        "default": "One Bag Every Day"
+      }
+    ]
+  }
+]

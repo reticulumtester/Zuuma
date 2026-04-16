@@ -1,0 +1,67 @@
+<section id="bag-product" class="pdp">
+  <div class="product-grid">
+    <div class="product-image-col">
+      <div class="product-main-img">
+        {% if product.featured_image %}
+          {{ product.featured_image | image_url: width: 1400 | image_tag:
+             sizes: '(min-width: 960px) 50vw, 100vw',
+             widths: '600,900,1200,1600',
+             alt: product.title,
+             fetchpriority: 'high' }}
+        {% endif %}
+      </div>
+      {% if product.images.size > 1 %}
+        <div class="badges">
+          {% for img in product.images offset: 1 limit: 4 %}
+            <span class="badge">{{ forloop.index | plus: 1 }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="product-info-col">
+      <p class="p-label">{{ product.vendor | default: 'Zuuma' }}</p>
+      <h1 class="p-title">{{ product.title }}</h1>
+      <p class="p-copy">{{ product.description | strip_html | truncatewords: 80 }}</p>
+
+      <form data-add-to-cart data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+            action="/cart/add" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+        {% if product.variants.size > 1 %}
+          <div class="specs-grid" style="grid-template-columns: 1fr;">
+            <div class="spec-row">
+              <span class="s-label">Variant</span>
+              <select name="id" class="s-val" style="font-family: inherit; padding: 8px 0; background: transparent; border: none; border-bottom: 1px solid var(--warm-grey);">
+                {% for v in product.variants %}
+                  <option value="{{ v.id }}" {% if v == product.selected_or_first_available_variant %}selected{% endif %}>
+                    {{ v.title }} — {{ v.price | money }}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        {% endif %}
+
+        <div class="p-cta">
+          <button type="submit" class="btn-cart" {% unless product.available %}disabled{% endunless %}>
+            {% if product.available %}
+              {{ 'products.product.add_to_cart' | t }} · {{ product.price | money }}
+            {% else %}
+              {{ 'products.product.sold_out' | t }}
+            {% endif %}
+          </button>
+          <p class="p-note">Handmade & numbered in Berlin</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": [],
+  "presets": []
+}
+{% endschema %}

@@ -1,0 +1,42 @@
+<section class="pdp" style="padding: 180px 60px 120px;">
+  <div class="product-grid" style="grid-template-columns: 2fr 1fr;">
+    <div class="product-info-col" style="padding-top: 0;">
+      <p class="p-label">{{ 'cart.general.title' | t }}</p>
+      <h1 class="p-title">Your <em>Cart.</em></h1>
+
+      {% if cart.item_count > 0 %}
+        <form action="{{ routes.cart_url }}" method="post" id="cart-form">
+          <div class="specs-grid" style="grid-template-columns: 1fr;">
+            {% for item in cart.items %}
+              <div class="spec-row" style="flex-direction: row; justify-content: space-between; align-items: center; gap: 24px;">
+                <div>
+                  <p class="s-label">{{ item.product.vendor | default: 'Zuuma' }}</p>
+                  <p class="s-val">{{ item.product.title }}</p>
+                </div>
+                <div style="text-align: right;">
+                  <p class="s-label">Qty {{ item.quantity }}</p>
+                  <p class="s-val">{{ item.final_line_price | money }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <div class="p-cta" style="margin-top: 40px;">
+            <p class="p-note" style="text-align: left;">{{ 'cart.general.subtotal' | t }} · <strong>{{ cart.total_price | money }}</strong></p>
+            <button type="submit" name="checkout" class="btn-cart">{{ 'cart.general.checkout' | t }}</button>
+          </div>
+        </form>
+      {% else %}
+        <p class="p-copy">{{ 'cart.general.empty' | t }}</p>
+        <a class="btn-cart" href="{{ routes.root_url }}" style="max-width: 280px;">Continue browsing</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,39 @@
+<section id="media-statement" data-zuuma-section="media-statement">
+  {% if section.settings.media_image != blank %}
+    <img class="media-bg" src="{{ section.settings.media_image | image_url: width: 2400 }}" alt="" data-parallax="0.2" loading="lazy">
+  {% else %}
+    <img class="media-bg" src="{{ 'bag-04.jpg' | asset_url }}" alt="" data-parallax="0.2" loading="lazy">
+  {% endif %}
+
+  {% if section.settings.show_frame %}
+    <div class="media-placeholder-frame" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 18 18" fill="none">
+        <polygon points="5,2 16,9 5,16" fill="rgba(255,255,255,0.25)"/>
+      </svg>
+      <p>Campaign video or photo</p>
+    </div>
+  {% endif %}
+
+  <div class="media-watermark">
+    <span data-parallax-text="0.3">{{ section.settings.watermark }}</span>
+  </div>
+
+  {% if section.settings.caption != blank %}
+    <div class="media-caption">{{ section.settings.caption }}</div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Media statement",
+  "settings": [
+    { "type": "image_picker", "id": "media_image", "label": "Background image" },
+    { "type": "text", "id": "watermark", "label": "Watermark word", "default": "Zuuma" },
+    { "type": "text", "id": "caption", "label": "Corner caption", "default": "Campaign · Spring 2025" },
+    { "type": "checkbox", "id": "show_frame", "label": "Show placeholder frame", "default": false }
+  ],
+  "presets": [
+    { "name": "Media statement", "category": "Zuuma" }
+  ]
+}
+{% endschema %}

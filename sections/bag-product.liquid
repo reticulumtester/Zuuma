@@ -1,0 +1,105 @@
+{%- assign product = section.settings.product -%}
+<section id="bag-product" data-zuuma-section="bag-product">
+  <div class="product-grid">
+    <div class="product-image-col reveal">
+      <div class="product-main-img">
+        {% if section.settings.product_image != blank %}
+          {{ section.settings.product_image | image_url: width: 1200 | image_tag:
+             sizes: '(min-width: 960px) 50vw, 100vw',
+             widths: '600,900,1200',
+             alt: 'Zuuma Bag' }}
+        {% elsif product and product.featured_image %}
+          {{ product.featured_image | image_url: width: 1200 | image_tag:
+             sizes: '(min-width: 960px) 50vw, 100vw',
+             widths: '600,900,1200',
+             alt: product.title }}
+        {% else %}
+          <img src="{{ 'bag-02.jpg' | asset_url }}" alt="Zuuma Bag" loading="lazy">
+        {% endif %}
+      </div>
+      <div class="badges">
+        <span class="badge">100% Cotton Canvas</span>
+        <span class="badge badge-teal">Numbered</span>
+      </div>
+    </div>
+
+    <div class="product-info-col">
+      <p class="p-label reveal">{{ section.settings.eyebrow }}</p>
+      <h2 class="p-title reveal d1">{{ section.settings.title }}<em>{{ section.settings.title_em }}</em></h2>
+
+      <p class="p-copy reveal d2">{{ section.settings.copy }}</p>
+
+      <div class="specs-grid reveal d3">
+        {% for block in section.blocks %}
+          <div class="spec-row">
+            <span class="s-label">{{ block.settings.label }}</span>
+            <span class="s-val">{{ block.settings.value }}</span>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="p-cta reveal d4">
+        {% if product %}
+          <form data-add-to-cart data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                action="/cart/add" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            <button type="submit" class="btn-cart"
+                    {% unless product.available %}disabled{% endunless %}>
+              {% if product.available %}
+                {{ 'products.product.add_to_cart' | t }} · {{ product.price | money }}
+              {% else %}
+                {{ 'products.product.sold_out' | t }}
+              {% endif %}
+            </button>
+          </form>
+        {% else %}
+          <a class="btn-cart" href="{{ section.settings.cta_link | default: routes.cart_url }}">
+            {{ section.settings.cta_label }}
+          </a>
+        {% endif %}
+        <p class="p-note">{{ section.settings.note }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bag — Product",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product", "info": "Link a real Shopify product to enable Add to Cart." },
+    { "type": "image_picker", "id": "product_image", "label": "Product image override" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Bag · Zuuma" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Zuuma" },
+    { "type": "text", "id": "title_em", "label": "Title italic", "default": "Bag" },
+    { "type": "textarea", "id": "copy", "label": "Copy" },
+    { "type": "text", "id": "note", "label": "Note", "default": "Free shipping · Handmade & numbered · Washable to 30°" },
+    { "type": "text", "id": "cta_label", "label": "Fallback CTA label", "default": "Add to Cart" },
+    { "type": "url", "id": "cta_link", "label": "Fallback CTA link" }
+  ],
+  "blocks": [
+    {
+      "type": "spec",
+      "name": "Spec row",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "text", "id": "value", "label": "Value" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "default": {
+    "blocks": [
+      { "type": "spec", "settings": { "label": "Material",  "value": "100% Canvas" } },
+      { "type": "spec", "settings": { "label": "Volume",    "value": "30 Litres" } },
+      { "type": "spec", "settings": { "label": "Weight",    "value": "400 g" } },
+      { "type": "spec", "settings": { "label": "Dimension", "value": "52 × 60 cm" } },
+      { "type": "spec", "settings": { "label": "Strap",     "value": "132 cm" } },
+      { "type": "spec", "settings": { "label": "Made in",   "value": "Berlin" } }
+    ]
+  },
+  "presets": [
+    { "name": "Bag — Product", "category": "Zuuma" }
+  ]
+}
+{% endschema %}

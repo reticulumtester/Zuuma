@@ -1,0 +1,33 @@
+{% render 'features-scene',
+   section_id: 'apron-features',
+   data_attr: 'apron',
+   stage_class: '',
+   section: section %}
+
+{% schema %}
+{
+  "name": "Apron — Features",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Also new" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "The Zuuma" },
+    { "type": "text", "id": "headline_em", "label": "Headline italic", "default": "Schürze." }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "name": "Feature callout",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "text", "id": "value", "label": "Value" },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        { "type": "range", "id": "x", "label": "Dot X (%)", "min": 0, "max": 100, "step": 1, "default": 50, "unit": "%" },
+        { "type": "range", "id": "y", "label": "Dot Y (%)", "min": 0, "max": 100, "step": 1, "default": 50, "unit": "%" }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    { "name": "Apron Features", "category": "Zuuma" }
+  ]
+}
+{% endschema %}

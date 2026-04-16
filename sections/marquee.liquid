@@ -1,0 +1,28 @@
+{%- assign items = section.settings.items | split: '·' -%}
+<div class="marquee-strip" id="marquee-{{ section.id }}">
+  <div class="marquee-track">
+    {% for i in (1..2) %}
+      {% for item in items %}
+        <span class="m-item">{{ item | strip }}</span>
+        <span class="m-item"><span class="m-dot">✦</span></span>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Marquee",
+  "settings": [
+    {
+      "type": "text",
+      "id": "items",
+      "label": "Items (separate with ·)",
+      "default": "One Bag Every Day · Handmade in Berlin · 100% Cotton Canvas · 30 Litres · 400 g · Every piece numbered"
+    }
+  ],
+  "presets": [
+    { "name": "Marquee", "category": "Zuuma" }
+  ]
+}
+{% endschema %}

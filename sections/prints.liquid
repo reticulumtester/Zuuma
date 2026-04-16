@@ -1,0 +1,119 @@
+<section id="prints" data-zuuma-section="prints">
+  <div class="prints-head reveal">
+    <h2>{{ section.settings.title }}<br><em>{{ section.settings.title_em }}</em></h2>
+    {% if section.settings.link_label != blank %}
+      <a href="{{ section.settings.link_url }}">{{ section.settings.link_label }}</a>
+    {% endif %}
+  </div>
+
+  <div class="prints-grid">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'print' %}
+          <a class="print-card reveal {% cycle 'd0','d1' %}" href="{{ block.settings.link }}">
+            <div class="print-card-img">
+              {% if block.settings.image != blank %}
+                {{ block.settings.image | image_url: width: 1000 | image_tag:
+                   sizes: '(min-width: 960px) 50vw, 100vw',
+                   widths: '600,900,1200',
+                   alt: block.settings.name,
+                   loading: 'lazy' }}
+              {% else %}
+                <div class="print-ph">
+                  <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                    <rect x="1" y="1" width="28" height="28" stroke="currentColor" stroke-width="0.75"/>
+                    {% if forloop.index == 1 %}
+                      <line x1="1" y1="1" x2="29" y2="29" stroke="currentColor" stroke-width="0.5"/>
+                    {% else %}
+                      <circle cx="15" cy="15" r="10" stroke="currentColor" stroke-width="0.5"/>
+                    {% endif %}
+                  </svg>
+                  {{ block.settings.name }}
+                </div>
+              {% endif %}
+              <div class="print-hover-layer">
+                <span class="print-hover-btn">View Print</span>
+              </div>
+            </div>
+            <div class="print-info">
+              <p class="print-cat">{{ block.settings.category }}</p>
+              <p class="print-name">{{ block.settings.name }}</p>
+              <p class="print-sub">{{ block.settings.sub }}</p>
+            </div>
+          </a>
+
+        {% when 'print-limited' %}
+          <div class="print-card print-card-wide reveal d2">
+            <div class="print-card-img">
+              {% if block.settings.image != blank %}
+                {{ block.settings.image | image_url: width: 1400 | image_tag:
+                   sizes: '(min-width: 960px) 50vw, 100vw',
+                   widths: '600,900,1200,1600',
+                   alt: block.settings.name,
+                   loading: 'lazy' }}
+              {% else %}
+                <div class="print-ph">
+                  <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                    <polygon points="15,1 29,29 1,29" stroke="currentColor" stroke-width="0.75" fill="none"/>
+                  </svg>
+                  {{ block.settings.name }}
+                </div>
+              {% endif %}
+            </div>
+            <div class="print-info">
+              <p class="print-cat">{{ block.settings.category }}</p>
+              <p class="print-name">{{ block.settings.name }}</p>
+              <p class="print-sub">{{ block.settings.sub }}</p>
+              <p class="coming-soon-note">{{ block.settings.note }}</p>
+              <a class="btn-notify" href="{{ block.settings.cta_link | default: '#' }}">
+                {{ block.settings.cta_label | default: 'Notify Me' }}
+              </a>
+              <div class="print-tag-teal">Limited · 50</div>
+            </div>
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Prints",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Also from" },
+    { "type": "text", "id": "title_em", "label": "Title italic", "default": "Zuuma" },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "All prints →" },
+    { "type": "url", "id": "link_url", "label": "Link URL" }
+  ],
+  "blocks": [
+    {
+      "type": "print",
+      "name": "Print card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "name", "label": "Name", "default": "Palm Noir" },
+        { "type": "text", "id": "category", "label": "Category", "default": "Art Print · Unlimited" },
+        { "type": "text", "id": "sub", "label": "Subtext", "default": "Printed on demand · Prodigi" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    },
+    {
+      "type": "print-limited",
+      "name": "Print card — limited",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "name", "label": "Name", "default": "Untitled No. 3" },
+        { "type": "text", "id": "category", "label": "Category", "default": "Art Print · Limited Edition" },
+        { "type": "text", "id": "sub", "label": "Subtext", "default": "50 pieces worldwide" },
+        { "type": "text", "id": "note", "label": "Availability note", "default": "Available soon" },
+        { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Notify Me" },
+        { "type": "url", "id": "cta_link", "label": "CTA link" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    { "name": "Prints", "category": "Zuuma" }
+  ]
+}
+{% endschema %}

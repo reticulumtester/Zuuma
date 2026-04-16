@@ -1,0 +1,25 @@
+{
+  "current": {
+    "color_background": "#f9f8f6",
+    "color_foreground": "#0c0c0c",
+    "color_accent": "#4fcdc4",
+    "color_warm_grey": "#e8e5e0",
+    "color_mid": "#b0aba3",
+    "enable_scrollytelling": true,
+    "enable_smooth_scroll": true,
+    "social_instagram": "",
+    "footer_tagline": "One Bag Every Day"
+  },
+  "presets": {
+    "Zuuma": {
+      "color_background": "#f9f8f6",
+      "color_foreground": "#0c0c0c",
+      "color_accent": "#4fcdc4",
+      "color_warm_grey": "#e8e5e0",
+      "color_mid": "#b0aba3",
+      "enable_scrollytelling": true,
+      "enable_smooth_scroll": true,
+      "footer_tagline": "One Bag Every Day"
+    }
+  }
+}

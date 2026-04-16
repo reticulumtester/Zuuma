@@ -1,0 +1,57 @@
+<div class="hero-pin" data-hero-pin>
+  <section id="hero" data-zuuma-section="hero">
+    <div class="hero-image-side" data-bag-origin>
+      <div class="bag-stage" data-bag-stage>
+        {% if section.settings.hero_image != blank %}
+          {{ section.settings.hero_image | image_url: width: 1600 | image_tag:
+             loading: 'eager',
+             fetchpriority: 'high',
+             sizes: '(min-width: 960px) 55vw, 100vw',
+             widths: '600,900,1200,1600',
+             alt: 'Zuuma Bag' }}
+        {% else %}
+          <img src="{{ 'bag-01.jpg' | asset_url }}" alt="Zuuma Bag" loading="eager" fetchpriority="high">
+        {% endif %}
+      </div>
+      <div class="hero-number-bg" aria-hidden="true">01</div>
+    </div>
+
+    <div class="hero-content-side">
+      <p class="hero-eyebrow reveal">{{ section.settings.eyebrow }}</p>
+      <h1 class="hero-headline reveal d1">
+        {{ section.settings.headline }}<em>{{ section.settings.headline_em }}</em>
+      </h1>
+      <div class="hero-divider reveal d2"></div>
+      <p class="hero-desc reveal d2">{{ section.settings.description }}</p>
+      <div class="hero-actions reveal d3">
+        {% if section.settings.cta_label != blank %}
+          <a href="{{ section.settings.cta_link }}" class="btn-primary">{{ section.settings.cta_label }}</a>
+        {% endif %}
+        {% if section.settings.secondary_label != blank %}
+          <a href="{{ section.settings.secondary_link }}" class="btn-link">{{ section.settings.secondary_label }}</a>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Hero — Bag",
+  "settings": [
+    { "type": "image_picker", "id": "hero_image", "label": "Hero bag image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Berlin · Handmade · Numbered" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "One Bag" },
+    { "type": "text", "id": "headline_em", "label": "Headline italic", "default": "Every Day." },
+    { "type": "textarea", "id": "description", "label": "Description",
+      "default": "Empty it lies light against your body. Full it carries everything — without protest, without pulling." },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Discover the Bag" },
+    { "type": "url", "id": "cta_link", "label": "CTA link" },
+    { "type": "text", "id": "secondary_label", "label": "Secondary label", "default": "Our Story" },
+    { "type": "url", "id": "secondary_link", "label": "Secondary link" }
+  ],
+  "presets": [
+    { "name": "Hero — Bag", "category": "Zuuma" }
+  ]
+}
+{% endschema %}

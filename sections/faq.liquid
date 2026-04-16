@@ -1,0 +1,45 @@
+<section id="faq" data-zuuma-section="faq">
+  <div class="faq-wrap">
+    <div class="faq-top reveal">
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 class="section-h">{{ section.settings.heading }}<em>{{ section.settings.heading_em }}</em></h2>
+    </div>
+
+    {% for b in section.blocks %}
+      <div class="qa-item reveal {% cycle 'd0', 'd1', 'd2', 'd3' %}">
+        <button class="qa-btn" type="button" aria-expanded="false">
+          <span class="qa-q">{{ b.settings.question }}</span>
+          <span class="qa-cross" aria-hidden="true"></span>
+        </button>
+        <div class="qa-body">
+          <p>{{ b.settings.answer }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "FAQ" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Questions &" },
+    { "type": "text", "id": "heading_em", "label": "Heading italic", "default": " Answers" }
+  ],
+  "blocks": [
+    {
+      "type": "qa",
+      "name": "Q & A",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question" },
+        { "type": "textarea", "id": "answer", "label": "Answer" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    { "name": "FAQ", "category": "Zuuma" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,33 @@
+{% render 'features-scene',
+   section_id: 'bag-features',
+   data_attr: 'bag',
+   stage_class: '',
+   section: section %}
+
+{% schema %}
+{
+  "name": "Bag — Features",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Anatomy of the bag" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Built to" },
+    { "type": "text", "id": "headline_em", "label": "Headline italic", "default": "carry it all." }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "name": "Feature callout",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Volume" },
+        { "type": "text", "id": "value", "label": "Value", "default": "30 litres" },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        { "type": "range", "id": "x", "label": "Dot X (% across image)", "min": 0, "max": 100, "step": 1, "default": 50, "unit": "%" },
+        { "type": "range", "id": "y", "label": "Dot Y (% down image)", "min": 0, "max": 100, "step": 1, "default": 50, "unit": "%" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    { "name": "Bag Features", "category": "Zuuma" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,16 @@
+<section class="pdp" style="padding: 180px 60px 120px;">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <p class="p-label">{{ page.title }}</p>
+    <h1 class="p-title" style="margin-bottom: 48px;">{{ page.title }}</h1>
+    <div class="p-copy" style="padding: 0; border: none; max-width: none; font-size: 16px;">
+      {{ page.content }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Page",
+  "settings": []
+}
+{% endschema %}

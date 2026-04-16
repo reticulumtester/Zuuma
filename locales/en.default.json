@@ -1,0 +1,46 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Skip to content",
+      "close": "Close",
+      "menu": "Menu"
+    },
+    "404": {
+      "title": "Page not found",
+      "subtext": "The page you were looking for doesn't exist.",
+      "link": "Return to the shop"
+    },
+    "password_page": {
+      "login_form_heading": "Enter store using password",
+      "login_form_password_label": "Password",
+      "login_form_submit": "Enter"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "price": "Price",
+      "from_price_html": "From {{ price }}"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your Cart",
+      "empty": "Your cart is empty",
+      "continue_browsing_html": "Continue browsing <a href=\"/collections/all\">here</a>.",
+      "subtotal": "Subtotal",
+      "checkout": "Checkout"
+    }
+  },
+  "sections": {
+    "header": {
+      "announcement": "Handmade & numbered in Berlin",
+      "cart_count": "items"
+    },
+    "footer": {
+      "copyright_html": "© {{ year }} Zuuma. All rights reserved."
+    }
+  }
+}

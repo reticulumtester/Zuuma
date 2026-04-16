@@ -1,0 +1,37 @@
+<section id="about" data-zuuma-section="about">
+  <div class="about-grid">
+    <div class="reveal">
+      <h2 class="about-headline">
+        {{ section.settings.headline }}<br><em>{{ section.settings.headline_em }}</em>
+      </h2>
+      <div class="about-accent-bar"></div>
+      <div class="about-origin">
+        <div class="origin-pip"></div>
+        <span>{{ section.settings.origin }}</span>
+      </div>
+    </div>
+
+    <div class="about-body">
+      <p class="about-copy reveal d1">{{ section.settings.copy_1 }}</p>
+      <blockquote class="about-quote reveal d2">"{{ section.settings.quote }}"</blockquote>
+      <p class="about-copy reveal d3">{{ section.settings.copy_2 }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About",
+  "settings": [
+    { "type": "text", "id": "headline", "label": "Headline", "default": "From film" },
+    { "type": "text", "id": "headline_em", "label": "Headline italic", "default": "to form." },
+    { "type": "text", "id": "origin", "label": "Origin tag", "default": "Handmade & numbered in Berlin" },
+    { "type": "textarea", "id": "copy_1", "label": "Paragraph 1" },
+    { "type": "textarea", "id": "quote", "label": "Pull quote" },
+    { "type": "textarea", "id": "copy_2", "label": "Paragraph 2" }
+  ],
+  "presets": [
+    { "name": "About", "category": "Zuuma" }
+  ]
+}
+{% endschema %}
