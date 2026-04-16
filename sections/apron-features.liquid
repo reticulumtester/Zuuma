@@ -1,8 +1,52 @@
-{% render 'features-scene',
-   section_id: 'apron-features',
-   data_attr: 'apron',
-   stage_class: '',
-   section: section %}
+<section id="apron-features" data-features-scene="apron">
+  <div class="features-stage" data-bag-dest="apron">
+    <div class="features-stage-image" data-features-fallback-image>
+      <img src="{{ 'bag-03.jpg' | asset_url }}" alt="" loading="lazy">
+    </div>
+    <svg class="features-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      {% for block in section.blocks %}
+        {%- assign x = block.settings.x | default: 50 -%}
+        {%- assign y = block.settings.y | default: 50 -%}
+        <line
+          class="callout-line"
+          data-callout-line="{{ forloop.index }}"
+          x1="{{ x }}" y1="{{ y }}"
+          x2="{{ x }}" y2="{{ y }}"
+          stroke="rgba(79,205,196,0.8)"
+          stroke-width="0.15"
+          stroke-linecap="round"
+          vector-effect="non-scaling-stroke"
+          pathLength="1"
+        />
+      {% endfor %}
+    </svg>
+    {% for block in section.blocks %}
+      {%- assign x = block.settings.x | default: 50 -%}
+      {%- assign y = block.settings.y | default: 50 -%}
+      <span class="callout-dot"
+            data-callout-dot="{{ forloop.index }}"
+            style="left: {{ x }}%; top: {{ y }}%"></span>
+    {% endfor %}
+  </div>
+
+  <div class="features-list">
+    <div class="features-head reveal">
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2>{{ section.settings.headline }}<em>{{ section.settings.headline_em }}</em></h2>
+    </div>
+    {% for block in section.blocks %}
+      <div class="feature-item reveal {% cycle 'd0','d1','d2','d3' %}"
+           data-feature-index="{{ forloop.index }}">
+        <span class="num">0{{ forloop.index }}</span>
+        <div>
+          <p class="label">{{ block.settings.label }}</p>
+          <p class="value">{{ block.settings.value }}</p>
+          <p class="desc">{{ block.settings.description }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
 
 {% schema %}
 {
