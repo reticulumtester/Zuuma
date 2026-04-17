@@ -6,20 +6,20 @@
 
       {% if cart.item_count > 0 %}
         <form action="{{ routes.cart_url }}" method="post" id="cart-form">
-          <div class="specs-grid" style="grid-template-columns: 1fr;">
+          <ul class="cart-lines">
             {% for item in cart.items %}
-              <div class="spec-row" style="flex-direction: row; justify-content: space-between; align-items: center; gap: 24px;">
-                <div>
-                  <p class="s-label">{{ item.product.vendor | default: 'Zuuma' }}</p>
-                  <p class="s-val">{{ item.product.title }}</p>
+              <li class="cart-line">
+                <div class="cart-line-main">
+                  <span class="cart-line-vendor">{{ item.product.vendor | default: 'Zuuma' }}</span>
+                  <span class="cart-line-title">{{ item.product.title }}</span>
                 </div>
-                <div style="text-align: right;">
-                  <p class="s-label">Qty {{ item.quantity }}</p>
-                  <p class="s-val">{{ item.final_line_price | money }}</p>
+                <div class="cart-line-meta">
+                  <span class="cart-line-vendor">Qty {{ item.quantity }}</span>
+                  <span class="cart-line-title">{{ item.final_line_price | money }}</span>
                 </div>
-              </div>
+              </li>
             {% endfor %}
-          </div>
+          </ul>
 
           <div class="p-cta" style="margin-top: 40px;">
             <p class="p-note" style="text-align: left;">{{ 'cart.general.subtotal' | t }} · <strong>{{ cart.total_price | money }}</strong></p>

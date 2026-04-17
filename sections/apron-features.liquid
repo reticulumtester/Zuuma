@@ -1,50 +1,59 @@
-<section id="apron-features" data-features-scene="apron">
-  <div class="features-stage" data-bag-dest="apron">
-    <div class="features-stage-image" data-features-fallback-image>
-      <img src="{{ 'bag-03.jpg' | asset_url }}" alt="" loading="lazy">
-    </div>
-    <svg class="features-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-      {% for block in section.blocks %}
-        {%- assign x = block.settings.x | default: 50 -%}
-        {%- assign y = block.settings.y | default: 50 -%}
-        <line
-          class="callout-line"
-          data-callout-line="{{ forloop.index }}"
-          x1="{{ x }}" y1="{{ y }}"
-          x2="{{ x }}" y2="{{ y }}"
-          stroke="rgba(79,205,196,0.8)"
-          stroke-width="0.15"
-          stroke-linecap="round"
-          vector-effect="non-scaling-stroke"
-          pathLength="1"
-        />
-      {% endfor %}
-    </svg>
-    {% for block in section.blocks %}
-      {%- assign x = block.settings.x | default: 50 -%}
-      {%- assign y = block.settings.y | default: 50 -%}
-      <span class="callout-dot"
-            data-callout-dot="{{ forloop.index }}"
-            style="left: {{ x }}%; top: {{ y }}%"></span>
-    {% endfor %}
+<section id="apron-features" data-feature-scene class="feature-scene-alt">
+  <div class="feature-scene-head reveal">
+    <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+    <h2 class="section-h">{{ section.settings.headline }}<em>{{ section.settings.headline_em }}</em></h2>
+    {% if section.settings.subline != blank %}
+      <p class="feature-scene-sub reveal d1">{{ section.settings.subline }}</p>
+    {% endif %}
   </div>
 
-  <div class="features-list">
-    <div class="features-head reveal">
-      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
-      <h2>{{ section.settings.headline }}<em>{{ section.settings.headline_em }}</em></h2>
-    </div>
-    {% for block in section.blocks %}
-      <div class="feature-item reveal {% cycle 'd0','d1','d2','d3' %}"
-           data-feature-index="{{ forloop.index }}">
-        <span class="num">0{{ forloop.index }}</span>
-        <div>
-          <p class="label">{{ block.settings.label }}</p>
-          <p class="value">{{ block.settings.value }}</p>
-          <p class="desc">{{ block.settings.description }}</p>
-        </div>
+  <div class="feature-scene">
+    <div class="feature-scene-visual">
+      <div class="feature-visual-stack">
+        {% for block in section.blocks %}
+          <figure class="feature-visual {% if forloop.first %}is-active{% endif %}"
+                  data-feature-visual="{{ forloop.index }}">
+            {% if block.settings.image != blank %}
+              {{ block.settings.image | image_url: width: 1600 | image_tag:
+                 loading: 'lazy',
+                 sizes: '(min-width: 960px) 55vw, 100vw',
+                 widths: '600,900,1200,1600',
+                 alt: block.settings.label }}
+            {% else %}
+              {%- assign fallback = forloop.index | plus: 2 -%}
+              {%- if fallback > 5 -%}{%- assign fallback = 3 -%}{%- endif -%}
+              <img src="{{ 'bag-0' | append: fallback | append: '.jpg' | asset_url }}"
+                   alt="{{ block.settings.label }}" loading="lazy">
+            {% endif %}
+            <figcaption class="feature-visual-caption">
+              <span class="feature-visual-num">0{{ forloop.index }}</span>
+              <span class="feature-visual-label">{{ block.settings.label }}</span>
+            </figcaption>
+          </figure>
+        {% endfor %}
       </div>
-    {% endfor %}
+
+      <div class="feature-progress" aria-hidden="true">
+        {% for block in section.blocks %}
+          <span class="feature-progress-tick" data-feature-tick="{{ forloop.index }}"></span>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="feature-scene-narrative">
+      {% for block in section.blocks %}
+        <article class="feature-card {% if forloop.first %}is-active{% endif %}"
+                 data-feature-card="{{ forloop.index }}">
+          <header class="feature-card-index">
+            <span class="feature-card-num">0{{ forloop.index }}</span>
+            <span class="feature-card-total">/ 0{{ section.blocks.size }}</span>
+          </header>
+          <p class="feature-card-label">{{ block.settings.label }}</p>
+          <h3 class="feature-card-value">{{ block.settings.value }}</h3>
+          <p class="feature-card-desc">{{ block.settings.description }}</p>
+        </article>
+      {% endfor %}
+    </div>
   </div>
 </section>
 
@@ -54,18 +63,19 @@
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Also new" },
     { "type": "text", "id": "headline", "label": "Headline", "default": "The Zuuma" },
-    { "type": "text", "id": "headline_em", "label": "Headline italic", "default": "Schürze." }
+    { "type": "text", "id": "headline_em", "label": "Headline italic", "default": "Schürze." },
+    { "type": "textarea", "id": "subline", "label": "Subline",
+      "default": "Same canvas, same obsession with fit. Made to be worked in — not spared." }
   ],
   "blocks": [
     {
       "type": "callout",
-      "name": "Feature callout",
+      "name": "Feature",
       "settings": [
+        { "type": "image_picker", "id": "image", "label": "Detail image" },
         { "type": "text", "id": "label", "label": "Label" },
         { "type": "text", "id": "value", "label": "Value" },
-        { "type": "textarea", "id": "description", "label": "Description" },
-        { "type": "range", "id": "x", "label": "Dot X (%)", "min": 0, "max": 100, "step": 1, "default": 50, "unit": "%" },
-        { "type": "range", "id": "y", "label": "Dot Y (%)", "min": 0, "max": 100, "step": 1, "default": 50, "unit": "%" }
+        { "type": "textarea", "id": "description", "label": "Description" }
       ]
     }
   ],

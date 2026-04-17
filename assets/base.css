@@ -20,7 +20,8 @@ body {
   color: var(--black);
   font-family: var(--sans);
   font-weight: 300;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -62,23 +63,24 @@ button {
 
 /* Typography tokens */
 .eyebrow {
-  font-size: 9px;
-  letter-spacing: 0.3em;
+  font-size: 10px;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--mid);
-  font-weight: 400;
+  color: var(--black);
+  opacity: 0.55;
+  font-weight: 500;
 }
 
 .section-h {
   font-family: var(--serif);
-  font-size: clamp(40px, 4.5vw, 58px);
+  font-size: clamp(48px, 5.5vw, 82px);
   font-weight: 300;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
 }
 .section-h em {
   font-style: italic;
-  color: rgba(0,0,0,0.28);
+  color: rgba(0,0,0,0.38);
 }
 
 /* Global reveal */

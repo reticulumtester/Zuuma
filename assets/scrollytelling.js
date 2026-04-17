@@ -1,11 +1,9 @@
 /* Zuuma — scrollytelling
-   GSAP + ScrollTrigger scenes. Keeps pins shallow and transitions tasteful.
-   - Scene 1: hero bag has upward parallax + subtle scale as you scroll out of hero
-   - Scene 2: features-stage bag enters from below with crossfade + settle, callouts draw in, feature items activate
-   - Scene 3: specs count up on reveal
-   - Scene 4: media watermark / bg parallax
-   - Scene 5: apron mirrors bag features (no hero morph — section stands on its own)
-   - Scene 6: prints stagger in
+   GSAP + ScrollTrigger scenes. Apple-style feature narratives.
+   - Hero: bag drifts up + scales with subtle parallax as you leave hero
+   - Feature scenes: sticky visual crossfades between detail shots as narrative cards
+     scroll past; progress ticks light up in rhythm
+   - Stat strip count-up, prints stagger, about accent bar, media parallax
 */
 (function () {
   const motion = window.ZuumaMotion || { scrollytelling: true, reduceMotion: false };
@@ -62,89 +60,64 @@
     });
   }
 
-  /* ---------- Features stage bag enters + settles ---------- */
-  function buildFeaturesBagEntry(sectionId) {
-    const section = document.querySelector(`#${sectionId}`);
+  /* ---------- Feature scene: sticky visual + narrative cards ---------- */
+  function buildFeatureScene(section) {
     if (!section) return;
-    const stage = section.querySelector('.features-stage');
-    const image = section.querySelector('.features-stage-image img');
-    if (!stage || !image) return;
     const gsap = window.gsap;
-    gsap.fromTo(
-      image,
-      { scale: 1.12, yPercent: 8, opacity: 0.5 },
-      {
-        scale: 1,
-        yPercent: 0,
-        opacity: 1,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 85%',
-          end: 'top 25%',
-          scrub: 0.8
+    const ScrollTrigger = window.ScrollTrigger;
+
+    const visuals = section.querySelectorAll('[data-feature-visual]');
+    const cards = section.querySelectorAll('[data-feature-card]');
+    const ticks = section.querySelectorAll('[data-feature-tick]');
+    if (!cards.length || !visuals.length) return;
+
+    function setActive(index) {
+      visuals.forEach((v) => {
+        const i = parseInt(v.dataset.featureVisual, 10);
+        v.classList.toggle('is-active', i === index);
+      });
+      cards.forEach((c) => {
+        const i = parseInt(c.dataset.featureCard, 10);
+        c.classList.toggle('is-active', i === index);
+      });
+      ticks.forEach((t) => {
+        const i = parseInt(t.dataset.featureTick, 10);
+        t.classList.toggle('is-active', i <= index);
+      });
+    }
+
+    cards.forEach((card) => {
+      const i = parseInt(card.dataset.featureCard, 10);
+      ScrollTrigger.create({
+        trigger: card,
+        start: 'top 65%',
+        end: 'bottom 40%',
+        onEnter: () => setActive(i),
+        onEnterBack: () => setActive(i)
+      });
+    });
+
+    // Subtle scale/parallax on the active visual as user scrolls the scene
+    const stack = section.querySelector('.feature-visual-stack');
+    if (stack) {
+      gsap.fromTo(stack,
+        { scale: 0.98, yPercent: 2 },
+        {
+          scale: 1.02, yPercent: -2, ease: 'none',
+          scrollTrigger: { trigger: section, start: 'top 80%', end: 'bottom top', scrub: true }
         }
-      }
-    );
+      );
+    }
+
+    setActive(1);
   }
 
-  /* ---------- Callouts ---------- */
-  function buildCallouts(sceneSelector) {
-    const scene = document.querySelector(sceneSelector);
-    if (!scene) return;
+  /* ---------- Stat strip count-up ---------- */
+  function buildStatCountUp() {
     const gsap = window.gsap;
     const ScrollTrigger = window.ScrollTrigger;
 
-    const items = scene.querySelectorAll('.feature-item');
-    const dots = scene.querySelectorAll('.callout-dot');
-    const lines = scene.querySelectorAll('.callout-line');
-    if (!items.length) return;
-
-    // Rebuild each line so it draws from image center (50,50) toward the dot
-    lines.forEach(line => {
-      const x = parseFloat(line.getAttribute('x1'));
-      const y = parseFloat(line.getAttribute('y1'));
-      line.setAttribute('x1', '50');
-      line.setAttribute('y1', '50');
-      line.setAttribute('x2', x);
-      line.setAttribute('y2', y);
-      line.style.pathLength = '1';
-      line.style.strokeDasharray = '1';
-      line.style.strokeDashoffset = '1';
-      line.style.opacity = '0';
-    });
-
-    dots.forEach(d => gsap.set(d, { opacity: 0, scale: 0.3 }));
-    items.forEach(i => i.classList.remove('is-active'));
-
-    const total = items.length;
-    ScrollTrigger.create({
-      trigger: scene,
-      start: 'top 60%',
-      end: 'bottom 80%',
-      scrub: false,
-      onUpdate: (self) => {
-        const p = self.progress;
-        const active = Math.min(total - 1, Math.floor(p * (total + 0.2)));
-        items.forEach((item, i) => item.classList.toggle('is-active', i <= active));
-        dots.forEach((dot, i) => {
-          const show = i <= active;
-          gsap.to(dot, { opacity: show ? 1 : 0, scale: show ? 1 : 0.3, duration: 0.4, overwrite: 'auto' });
-        });
-        lines.forEach((line, i) => {
-          const show = i <= active;
-          gsap.to(line, { strokeDashoffset: show ? 0 : 1, opacity: show ? 1 : 0, duration: 0.6, overwrite: 'auto' });
-        });
-      }
-    });
-  }
-
-  /* ---------- Spec count-up ---------- */
-  function buildSpecCountUp() {
-    const gsap = window.gsap;
-    const ScrollTrigger = window.ScrollTrigger;
-
-    document.querySelectorAll('.specs-grid .s-val').forEach(el => {
+    document.querySelectorAll('.stat-strip-val').forEach(el => {
       const raw = el.textContent.trim();
       const match = raw.match(/(\d+(?:\.\d+)?)/);
       if (!match) return;
@@ -155,15 +128,15 @@
       const obj = { v: 0 };
       ScrollTrigger.create({
         trigger: el,
-        start: 'top 85%',
+        start: 'top 88%',
         once: true,
         onEnter: () => {
           gsap.to(obj, {
             v: num,
-            duration: 1.1,
+            duration: 1.2,
             ease: 'power2.out',
             onUpdate: () => {
-              const rounded = num >= 100 ? Math.round(obj.v) : obj.v.toFixed(num % 1 === 0 ? 0 : 1);
+              const rounded = num % 1 === 0 ? Math.round(obj.v) : obj.v.toFixed(1);
               el.textContent = prefix + rounded + suffix;
             },
             onComplete: () => { el.textContent = raw; }
@@ -173,7 +146,21 @@
     });
   }
 
-  /* ---------- Parallax ---------- */
+  /* ---------- Product image soft parallax ---------- */
+  function buildProductParallax() {
+    const gsap = window.gsap;
+    document.querySelectorAll('[data-parallax-image] img').forEach(img => {
+      gsap.fromTo(img,
+        { yPercent: -4, scale: 1.04 },
+        {
+          yPercent: 4, scale: 1, ease: 'none',
+          scrollTrigger: { trigger: img.closest('[data-parallax-image]'), start: 'top bottom', end: 'bottom top', scrub: true }
+        }
+      );
+    });
+  }
+
+  /* ---------- Generic parallax data hooks ---------- */
   function buildParallax() {
     const gsap = window.gsap;
     document.querySelectorAll('[data-parallax]').forEach(el => {
@@ -200,9 +187,21 @@
     const cards = document.querySelectorAll('#prints .print-card');
     if (!cards.length) return;
     gsap.from(cards, {
-      y: 40, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.1,
+      y: 50, opacity: 0, duration: 1, ease: 'power3.out', stagger: 0.12,
       scrollTrigger: { trigger: '#prints', start: 'top 75%' }
     });
+  }
+
+  /* ---------- About accent bar ---------- */
+  function buildAboutAccent() {
+    const gsap = window.gsap;
+    const bar = document.querySelector('#about .about-accent');
+    if (!bar) return;
+    gsap.fromTo(bar,
+      { height: 0 },
+      { height: '60px', duration: 1.2, ease: 'power3.out',
+        scrollTrigger: { trigger: '#about', start: 'top 70%' } }
+    );
   }
 
   ready(() => {
@@ -211,14 +210,13 @@
 
       if (isDesktop()) {
         buildHeroBagParallax();
-        buildFeaturesBagEntry('bag-features');
-        buildFeaturesBagEntry('apron-features');
+        document.querySelectorAll('[data-feature-scene]').forEach(buildFeatureScene);
       }
-      buildCallouts('#bag-features');
-      buildCallouts('#apron-features');
-      buildSpecCountUp();
+      buildStatCountUp();
+      buildProductParallax();
       buildParallax();
       buildPrintsReveal();
+      buildAboutAccent();
 
       if (document.fonts && document.fonts.ready) {
         document.fonts.ready.then(() => window.ScrollTrigger.refresh());

@@ -29,17 +29,15 @@
         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
         {% if product.variants.size > 1 %}
-          <div class="specs-grid" style="grid-template-columns: 1fr;">
-            <div class="spec-row">
-              <span class="s-label">Variant</span>
-              <select name="id" class="s-val" style="font-family: inherit; padding: 8px 0; background: transparent; border: none; border-bottom: 1px solid var(--warm-grey);">
-                {% for v in product.variants %}
-                  <option value="{{ v.id }}" {% if v == product.selected_or_first_available_variant %}selected{% endif %}>
-                    {{ v.title }} — {{ v.price | money }}
-                  </option>
-                {% endfor %}
-              </select>
-            </div>
+          <div class="variant-picker">
+            <label class="variant-picker-label" for="variant-select">Variant</label>
+            <select id="variant-select" name="id" class="variant-picker-select">
+              {% for v in product.variants %}
+                <option value="{{ v.id }}" {% if v == product.selected_or_first_available_variant %}selected{% endif %}>
+                  {{ v.title }} — {{ v.price | money }}
+                </option>
+              {% endfor %}
+            </select>
           </div>
         {% endif %}
 
