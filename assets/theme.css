@@ -1145,6 +1145,102 @@
   .mask-reveal-inner { transform: none !important; }
 }
 
+/* ============ PROOF — WHAT FITS ============ */
+#proof {
+  padding: 160px 60px;
+  background: var(--off-white);
+}
+.proof-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 96px;
+  align-items: flex-start;
+}
+.proof-visual {
+  position: sticky;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.proof-visual img {
+  aspect-ratio: 4/5;
+  width: 100%;
+  object-fit: cover;
+  background: #eceae5;
+}
+.proof-caption {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.5);
+  font-weight: 500;
+}
+.proof-body { padding-top: 20px; }
+.proof-body .eyebrow { display: block; margin-bottom: 28px; }
+.proof-body .section-h { margin-bottom: 40px; }
+.proof-lede {
+  font-family: var(--serif);
+  font-size: clamp(20px, 1.6vw, 24px);
+  line-height: 1.5;
+  font-weight: 300;
+  color: rgba(0,0,0,0.82);
+  margin-bottom: 56px;
+  max-width: 520px;
+}
+.proof-list {
+  list-style: none;
+  margin: 0 0 40px;
+  padding: 0;
+  border-top: 1px solid rgba(0,0,0,0.12);
+}
+.proof-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  gap: 24px;
+}
+.proof-item-name {
+  font-size: 15px;
+  color: rgba(0,0,0,0.78);
+  font-weight: 300;
+}
+.proof-item-weight {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--black);
+  letter-spacing: 0;
+}
+.proof-total {
+  border-bottom: none;
+  padding-top: 22px;
+  margin-top: 8px;
+  border-top: 1px solid rgba(0,0,0,0.24);
+}
+.proof-total .proof-item-name {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--black);
+}
+.proof-total .proof-item-weight {
+  font-size: 28px;
+  color: var(--accent);
+}
+.proof-footnote {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(0,0,0,0.5);
+  font-style: italic;
+  max-width: 440px;
+}
+
 /* ============ BUNDLE ============ */
 #bundle {
   padding: 160px 60px;
@@ -1271,8 +1367,14 @@
   #apron-product,
   #prints,
   #about,
+  #proof,
   #bundle,
   #faq { padding: 100px 28px; }
+
+  .proof-inner { grid-template-columns: 1fr; gap: 56px; }
+  .proof-visual { position: static; top: auto; }
+  .proof-lede { font-size: 19px; }
+  .proof-total .proof-item-weight { font-size: 24px; }
 
   .product-grid,
   .about-grid { grid-template-columns: 1fr; gap: 56px; }
