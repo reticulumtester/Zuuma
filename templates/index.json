@@ -74,7 +74,16 @@
         "note": "Free shipping · Handmade & numbered · Washable to 30°",
         "cta_label": "Add to Cart",
         "cta_link": "/cart"
-      }
+      },
+      "blocks": {
+        "s1": { "type": "spec", "settings": { "label": "Material",  "value": "100% Canvas" } },
+        "s2": { "type": "spec", "settings": { "label": "Volume",    "value": "30 Litres" } },
+        "s3": { "type": "spec", "settings": { "label": "Weight",    "value": "400 g" } },
+        "s4": { "type": "spec", "settings": { "label": "Dimension", "value": "52 × 60 cm" } },
+        "s5": { "type": "spec", "settings": { "label": "Strap",     "value": "132 cm" } },
+        "s6": { "type": "spec", "settings": { "label": "Made in",   "value": "Berlin" } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4", "s5", "s6"]
     },
     "media-statement": {
       "type": "media-statement",
@@ -140,7 +149,16 @@
         "note": "Limited run · Numbered · Made in Berlin",
         "cta_label": "Add to Cart",
         "cta_link": "/cart"
-      }
+      },
+      "blocks": {
+        "as1": { "type": "spec", "settings": { "label": "Material",   "value": "Heavy Canvas" } },
+        "as2": { "type": "spec", "settings": { "label": "Fit",        "value": "One size" } },
+        "as3": { "type": "spec", "settings": { "label": "Pockets",    "value": "Two deep" } },
+        "as4": { "type": "spec", "settings": { "label": "Neck",       "value": "Adjustable" } },
+        "as5": { "type": "spec", "settings": { "label": "Waist ties", "value": "Long" } },
+        "as6": { "type": "spec", "settings": { "label": "Made in",    "value": "Berlin" } }
+      },
+      "block_order": ["as1", "as2", "as3", "as4", "as5", "as6"]
     },
     "prints": {
       "type": "prints",
