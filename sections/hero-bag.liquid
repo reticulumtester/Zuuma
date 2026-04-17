@@ -25,7 +25,12 @@
       <p class="hero-desc reveal d2">{{ section.settings.description }}</p>
       <div class="hero-actions reveal d3">
         {% if section.settings.cta_label != blank %}
-          <a href="{{ section.settings.cta_link }}" class="btn-primary">{{ section.settings.cta_label }}</a>
+          <a href="{{ section.settings.cta_link }}" class="btn-primary">
+            <span class="btn-primary-label">{{ section.settings.cta_label }}</span>
+            {% if section.settings.cta_price != blank %}
+              <span class="btn-primary-price">{{ section.settings.cta_price }}</span>
+            {% endif %}
+          </a>
         {% endif %}
         {% if section.settings.secondary_label != blank %}
           <a href="{{ section.settings.secondary_link }}" class="btn-link">{{ section.settings.secondary_label }}</a>
@@ -41,11 +46,12 @@
   "settings": [
     { "type": "image_picker", "id": "hero_image", "label": "Hero bag image" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Berlin · Handmade · Numbered" },
-    { "type": "text", "id": "headline", "label": "Headline", "default": "One Bag" },
-    { "type": "text", "id": "headline_em", "label": "Headline italic", "default": "Every Day." },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "The bag you" },
+    { "type": "text", "id": "headline_em", "label": "Headline italic", "default": "stop noticing." },
     { "type": "textarea", "id": "description", "label": "Description",
-      "default": "Empty it lies light against your body. Full it carries everything — without protest, without pulling." },
-    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Discover the Bag" },
+      "default": "One bag from the bakery to the studio to dinner. Four hundred grams empty. Ten kilos without complaint. The rest of your bags can stay in the cupboard." },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Shop the Bag" },
+    { "type": "text", "id": "cta_price", "label": "CTA price display", "default": "€149" },
     { "type": "url", "id": "cta_link", "label": "CTA link" },
     { "type": "text", "id": "secondary_label", "label": "Secondary label", "default": "Our Story" },
     { "type": "url", "id": "secondary_link", "label": "Secondary link" }

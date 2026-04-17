@@ -112,17 +112,17 @@
     setActive(1);
   }
 
-  /* ---------- Stat strip count-up ---------- */
-  function buildStatCountUp() {
+  /* ---------- Feature card value count-up (one-shot when card activates) ---------- */
+  function buildValueCountUp() {
     const gsap = window.gsap;
     const ScrollTrigger = window.ScrollTrigger;
 
-    document.querySelectorAll('.stat-strip-val').forEach(el => {
+    document.querySelectorAll('.feature-card-value').forEach(el => {
       const raw = el.textContent.trim();
-      const match = raw.match(/(\d+(?:\.\d+)?)/);
+      const match = raw.match(/(\d+(?:[.,]\d+)?)/);
       if (!match) return;
-      const num = parseFloat(match[1]);
-      if (num === 0) return;
+      const num = parseFloat(match[1].replace(',', '.'));
+      if (num === 0 || !isFinite(num)) return;
       const prefix = raw.slice(0, match.index);
       const suffix = raw.slice(match.index + match[0].length);
       const obj = { v: 0 };
@@ -133,15 +133,37 @@
         onEnter: () => {
           gsap.to(obj, {
             v: num,
-            duration: 1.2,
+            duration: 1.1,
             ease: 'power2.out',
             onUpdate: () => {
               const rounded = num % 1 === 0 ? Math.round(obj.v) : obj.v.toFixed(1);
               el.textContent = prefix + rounded + suffix;
-            },
-            onComplete: () => { el.textContent = raw; }
+            }
           });
         }
+      });
+    });
+  }
+
+  /* ---------- Mask reveal on italic emphasis ---------- */
+  function buildMaskReveal() {
+    const ScrollTrigger = window.ScrollTrigger;
+    const selectors = '.hero-headline em, .section-h em, .p-title em, .about-headline em, .prints-head em';
+
+    document.querySelectorAll(selectors).forEach(el => {
+      if (el.dataset.maskWrapped === '1') return;
+      el.dataset.maskWrapped = '1';
+      const inner = document.createElement('span');
+      inner.className = 'mask-reveal-inner';
+      while (el.firstChild) inner.appendChild(el.firstChild);
+      el.appendChild(inner);
+      el.classList.add('mask-reveal');
+
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 88%',
+        once: true,
+        onEnter: () => el.classList.add('is-in')
       });
     });
   }
@@ -212,7 +234,8 @@
         buildHeroBagParallax();
         document.querySelectorAll('[data-feature-scene]').forEach(buildFeatureScene);
       }
-      buildStatCountUp();
+      buildValueCountUp();
+      buildMaskReveal();
       buildProductParallax();
       buildParallax();
       buildPrintsReveal();

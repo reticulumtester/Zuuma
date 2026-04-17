@@ -4,12 +4,13 @@
       "type": "hero-bag",
       "settings": {
         "eyebrow": "Berlin · Handmade · Numbered",
-        "headline": "One Bag",
-        "headline_em": "Every Day.",
-        "description": "Empty it lies light against your body. Full it carries everything — without protest, without pulling.",
-        "cta_label": "Discover the Bag",
+        "headline": "The bag you",
+        "headline_em": "stop noticing.",
+        "description": "One bag from the bakery to the studio to dinner. Four hundred grams empty. Ten kilos without complaint. The rest of your bags can stay in the cupboard.",
+        "cta_label": "Shop the Bag",
+        "cta_price": "€149",
         "cta_link": "#bag-product",
-        "secondary_label": "Our Story",
+        "secondary_label": "Where we come from",
         "secondary_link": "#about"
       }
     },
@@ -17,9 +18,9 @@
       "type": "bag-features",
       "settings": {
         "eyebrow": "Chapter 01 · Anatomy",
-        "headline": "Built to",
-        "headline_em": "carry it all.",
-        "subline": "Four details that earn their place. Scroll to read the bag."
+        "headline": "The anatomy.",
+        "headline_em": "Four decisions, nothing else.",
+        "subline": "Specs. The story is above."
       },
       "blocks": {
         "feat-1": {
@@ -57,6 +58,17 @@
       },
       "block_order": ["feat-1", "feat-2", "feat-3", "feat-4"]
     },
+    "about": {
+      "type": "about",
+      "settings": {
+        "headline": "From film",
+        "headline_em": "to form.",
+        "origin": "Handmade & numbered in Berlin",
+        "copy_1": "We came up through the film industry — where function isn't a feeling, it's a requirement. A strap either holds for twelve hours on set, or it doesn't. A case either survives the rain in Hamburg, or it doesn't. You learn fast that good design is the kind you stop noticing.",
+        "quote": "Would I carry this bag myself — with maximum standards for function and design?",
+        "copy_2": "We made thirty-one prototypes of the Zuuma Bag. We kept the one we stopped noticing. Berlin, by hand, numbered — because the person who sewed it should be able to find it again."
+      }
+    },
     "bag-product": {
       "type": "bag-product",
       "settings": {
@@ -64,30 +76,19 @@
         "image_caption": "No. 001 · Zuuma Black",
         "title": "Zuuma",
         "title_em": "Bag.",
-        "copy": "Cut from 100% cotton canvas — deep black, screen-printed, built to last a decade of daily use. Worn crossbody, the five-centimeter strap distributes the weight so cleanly that seven kilos feel like nothing. Folds flat when you don't need it. Carries ten when you do. One bag, for everything you do in a day.",
+        "copy": "Monday it's a laptop and a lunch. Wednesday a yoga mat, a bottle of wine, the dry-cleaning. Saturday the market — two kilos of tomatoes, bread under one arm, flowers under the other. Deep black cotton canvas, screen-printed in Berlin, signed inside. The bag stops being a thing you carry. It becomes the day you had.",
+        "spec_line": "30 L · 10 kg max · 400 g · 52 × 60 cm",
         "price_display": "€149",
         "note": "Free shipping · Numbered · Washable to 30°",
         "cta_label": "Add to Cart",
         "cta_link": "/cart"
-      },
-      "blocks": {
-        "s1": { "type": "stat", "settings": { "value": "30 L", "label": "Volume" } },
-        "s2": { "type": "stat", "settings": { "value": "10 kg", "label": "Max load" } },
-        "s3": { "type": "stat", "settings": { "value": "400 g", "label": "Weight" } }
-      },
-      "block_order": ["s1", "s2", "s3"]
+      }
     },
     "media-statement": {
       "type": "media-statement",
       "settings": {
         "watermark": "Zuuma",
         "caption": "Campaign · Spring 2025"
-      }
-    },
-    "marquee": {
-      "type": "marquee",
-      "settings": {
-        "items": "One Bag Every Day · Handmade in Berlin · 100% Cotton Canvas · 30 Litres · 400 g · Every piece numbered"
       }
     },
     "apron-features": {
@@ -134,17 +135,12 @@
         "title": "Zuuma",
         "title_em": "Schürze.",
         "copy": "From kitchen to studio. Heavy canvas, long ties, two deep pockets that actually hold things. The apron we wanted for ourselves — handmade in Berlin, numbered like the bag. Limited first run.",
+        "spec_line": "Heavy canvas · One size · Two deep pockets",
         "price_display": "€79",
         "note": "Limited run · Numbered · Made in Berlin",
         "cta_label": "Add to Cart",
         "cta_link": "/cart"
-      },
-      "blocks": {
-        "as1": { "type": "stat", "settings": { "value": "Heavy", "label": "Canvas" } },
-        "as2": { "type": "stat", "settings": { "value": "One size", "label": "Fits all" } },
-        "as3": { "type": "stat", "settings": { "value": "Two", "label": "Deep pockets" } }
-      },
-      "block_order": ["as1", "as2", "as3"]
+      }
     },
     "prints": {
       "type": "prints",
@@ -187,15 +183,28 @@
       },
       "block_order": ["p-1", "p-2", "p-3"]
     },
-    "about": {
-      "type": "about",
+    "bundle": {
+      "type": "bundle",
       "settings": {
-        "headline": "From film",
-        "headline_em": "to form.",
-        "origin": "Handmade & numbered in Berlin",
-        "copy_1": "We come from the film industry, where our mentors always taught us that design should serve function — a good idea is recognisable by one simple thing: it works.",
-        "quote": "Would I carry this bag myself — with maximum standards for function and design?",
-        "copy_2": "The Zuuma Bag was born from a real frustration. After many tests, we found the balance. One bag for all of it. Minimal by design. Built to last. We speak to everyone and exclude no one."
+        "eyebrow": "The Pair",
+        "headline": "Bag &",
+        "headline_em": "Schürze.",
+        "copy": "The two objects we live in. Same canvas, same signature, same hands. Buy them together, save €18.",
+        "item_1_label": "Zuuma Bag",
+        "item_1_price": "€149",
+        "item_2_label": "Zuuma Schürze",
+        "item_2_price": "€79",
+        "total_strike": "€228",
+        "total_display": "€210",
+        "cta_label": "Add the Pair",
+        "cta_link": "/cart",
+        "note": "Ships in one box · Numbered · Berlin"
+      }
+    },
+    "marquee": {
+      "type": "marquee",
+      "settings": {
+        "items": "The bag you stop noticing · Handmade in Berlin · Numbered by hand · One bag, every day"
       }
     },
     "faq": {
@@ -217,7 +226,7 @@
           "type": "qa",
           "settings": {
             "question": "Is it suitable for all body types and heights?",
-            "answer": "Yes — by design. The strap adjusts to 132 cm and works equally well for people over 1.80 m and those much shorter. The bag sits the same on everyone. That's intentional math, not coincidence."
+            "answer": "Yes — by design. The strap adjusts to 132 cm and works equally well for people over 1.80 m and those much shorter. The bag sits the same on everyone. That's intentional, not coincidence."
           }
         },
         "q3": {
@@ -245,7 +254,7 @@
           "type": "qa",
           "settings": {
             "question": "Will there be more colours or editions?",
-            "answer": "Yes. We're exploring olive green as the next colour. Future editions may also be tied to specific events or charity collaborations. Each new colour will justify itself — by design, not marketing."
+            "answer": "Yes. We're exploring olive green as the next colour. Future editions may also be tied to specific events or charity collaborations. Each new colour will justify itself — by the work, not the packaging."
           }
         }
       },
@@ -255,13 +264,14 @@
   "order": [
     "hero-bag",
     "bag-features",
+    "about",
     "bag-product",
     "media-statement",
-    "marquee",
     "apron-features",
     "apron-product",
     "prints",
-    "about",
+    "bundle",
+    "marquee",
     "faq"
   ]
 }

@@ -1,0 +1,86 @@
+<section id="bundle" data-zuuma-section="bundle">
+  <div class="bundle-inner">
+    <div class="bundle-head reveal">
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 class="section-h">{{ section.settings.headline }}<em> {{ section.settings.headline_em }}</em></h2>
+      <p class="bundle-copy reveal d1">{{ section.settings.copy }}</p>
+    </div>
+
+    <div class="bundle-grid">
+      <figure class="bundle-item reveal d2">
+        {% if section.settings.item_1_image != blank %}
+          {{ section.settings.item_1_image | image_url: width: 1200 | image_tag:
+             sizes: '(min-width: 960px) 45vw, 90vw',
+             widths: '600,900,1200',
+             alt: section.settings.item_1_label,
+             loading: 'lazy' }}
+        {% else %}
+          <img src="{{ 'bag-05.jpg' | asset_url }}" alt="{{ section.settings.item_1_label }}" loading="lazy">
+        {% endif %}
+        <figcaption>
+          <span class="bundle-item-name">{{ section.settings.item_1_label }}</span>
+          <span class="bundle-item-price">{{ section.settings.item_1_price }}</span>
+        </figcaption>
+      </figure>
+
+      <span class="bundle-plus" aria-hidden="true">+</span>
+
+      <figure class="bundle-item reveal d3">
+        {% if section.settings.item_2_image != blank %}
+          {{ section.settings.item_2_image | image_url: width: 1200 | image_tag:
+             sizes: '(min-width: 960px) 45vw, 90vw',
+             widths: '600,900,1200',
+             alt: section.settings.item_2_label,
+             loading: 'lazy' }}
+        {% else %}
+          <img src="{{ 'bag-04.jpg' | asset_url }}" alt="{{ section.settings.item_2_label }}" loading="lazy">
+        {% endif %}
+        <figcaption>
+          <span class="bundle-item-name">{{ section.settings.item_2_label }}</span>
+          <span class="bundle-item-price">{{ section.settings.item_2_price }}</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="bundle-checkout reveal d4">
+      <div class="bundle-total">
+        {% if section.settings.total_strike != blank %}
+          <span class="bundle-total-strike">{{ section.settings.total_strike }}</span>
+        {% endif %}
+        <span class="bundle-total-display">{{ section.settings.total_display }}</span>
+      </div>
+      <a class="btn-cart btn-cart-bundle" href="{{ section.settings.cta_link | default: routes.cart_url }}">
+        <span>{{ section.settings.cta_label }}</span>
+        <span class="btn-cart-price">{{ section.settings.total_display }}</span>
+      </a>
+      <p class="p-note">{{ section.settings.note }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bundle — Bag + Apron",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Pair" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Bag &" },
+    { "type": "text", "id": "headline_em", "label": "Headline italic", "default": "Schürze." },
+    { "type": "textarea", "id": "copy", "label": "Description",
+      "default": "The two objects we live in. Same canvas, same signature, same hands. Buy them together, save €18." },
+    { "type": "image_picker", "id": "item_1_image", "label": "Item 1 image" },
+    { "type": "text", "id": "item_1_label", "label": "Item 1 label", "default": "Zuuma Bag" },
+    { "type": "text", "id": "item_1_price", "label": "Item 1 price", "default": "€149" },
+    { "type": "image_picker", "id": "item_2_image", "label": "Item 2 image" },
+    { "type": "text", "id": "item_2_label", "label": "Item 2 label", "default": "Zuuma Schürze" },
+    { "type": "text", "id": "item_2_price", "label": "Item 2 price", "default": "€79" },
+    { "type": "text", "id": "total_strike", "label": "Pre-discount total", "default": "€228" },
+    { "type": "text", "id": "total_display", "label": "Bundle price", "default": "€210" },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Add the Pair" },
+    { "type": "url", "id": "cta_link", "label": "CTA link" },
+    { "type": "text", "id": "note", "label": "Note", "default": "Ships in one box · Numbered · Berlin" }
+  ],
+  "presets": [
+    { "name": "Bundle — Bag + Apron", "category": "Zuuma" }
+  ]
+}
+{% endschema %}

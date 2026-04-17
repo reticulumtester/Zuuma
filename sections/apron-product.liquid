@@ -30,15 +30,8 @@
 
       <p class="p-copy reveal d2">{{ section.settings.copy }}</p>
 
-      {% if section.blocks.size > 0 %}
-        <div class="stat-strip reveal d3">
-          {% for block in section.blocks %}
-            <div class="stat-strip-item">
-              <span class="stat-strip-val">{{ block.settings.value }}</span>
-              <span class="stat-strip-label">{{ block.settings.label }}</span>
-            </div>
-          {% endfor %}
-        </div>
+      {% if section.settings.spec_line != blank %}
+        <p class="p-spec-line reveal d3">{{ section.settings.spec_line }}</p>
       {% endif %}
 
       <div class="p-cta reveal d4">
@@ -81,32 +74,14 @@
     { "type": "text", "id": "title", "label": "Title", "default": "Zuuma" },
     { "type": "text", "id": "title_em", "label": "Title italic", "default": "Schürze" },
     { "type": "textarea", "id": "copy", "label": "Descriptive copy" },
+    { "type": "text", "id": "spec_line", "label": "Inline spec line", "default": "Heavy canvas · One size · Two deep pockets" },
     { "type": "text", "id": "price_display", "label": "Fallback price (e.g. €79)", "default": "" },
     { "type": "text", "id": "note", "label": "Note", "default": "Limited run · Numbered · Made in Berlin" },
     { "type": "text", "id": "cta_label", "label": "Fallback CTA label", "default": "Add to Cart" },
     { "type": "url", "id": "cta_link", "label": "Fallback CTA link" }
   ],
-  "blocks": [
-    {
-      "type": "stat",
-      "name": "Key stat",
-      "settings": [
-        { "type": "text", "id": "value", "label": "Value" },
-        { "type": "text", "id": "label", "label": "Label" }
-      ]
-    }
-  ],
-  "max_blocks": 4,
   "presets": [
-    {
-      "name": "Apron — Product",
-      "category": "Zuuma",
-      "blocks": [
-        { "type": "stat", "settings": { "value": "Heavy", "label": "Canvas" } },
-        { "type": "stat", "settings": { "value": "One size", "label": "Fits all" } },
-        { "type": "stat", "settings": { "value": "Two", "label": "Deep pockets" } }
-      ]
-    }
+    { "name": "Apron — Product", "category": "Zuuma" }
   ]
 }
 {% endschema %}
