@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-print-product",
+      "settings": {
+        "eyebrow": "The Studio · Zuuma",
+        "edition_line": "Printed on demand via Prodigi · Ready to frame",
+        "note": "Prints ship separately · Signed when limited"
+      }
+    }
+  },
+  "order": ["main"]
+}

@@ -1,0 +1,45 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-prints-collection",
+      "settings": {
+        "eyebrow": "Chapter 03 · The Studio",
+        "headline": "The part that isn't",
+        "headline_em": "useful.",
+        "standfirst": "Images we couldn't not make. Printed on paper that outlives the wall it hangs on. Open editions printed on demand via Prodigi; one limited edition per season, signed and numbered by hand.",
+        "footer_note": "Prints ship separately — museum-grade paper, ready to frame. Limited editions are numbered and signed in Berlin."
+      },
+      "blocks": {
+        "p-1": {
+          "type": "print",
+          "settings": {
+            "name": "Palm Noir",
+            "category": "Open Edition · Studio",
+            "price": "From €49",
+            "link": "/products/palm-noir"
+          }
+        },
+        "p-2": {
+          "type": "print",
+          "settings": {
+            "name": "Nocturnal Garden",
+            "category": "Open Edition · Studio",
+            "price": "From €49",
+            "link": "/products/nocturnal-garden"
+          }
+        },
+        "p-3": {
+          "type": "print",
+          "settings": {
+            "name": "Untitled No. 3",
+            "category": "Edition of 50 · Signed",
+            "price": "Drops this season",
+            "link": "#"
+          }
+        }
+      },
+      "block_order": ["p-1", "p-2", "p-3"]
+    }
+  },
+  "order": ["main"]
+}

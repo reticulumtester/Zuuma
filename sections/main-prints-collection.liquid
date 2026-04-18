@@ -1,0 +1,92 @@
+<section id="studio" class="studio-page" data-zuuma-section="studio-collection">
+  <header class="studio-page-head">
+    <p class="eyebrow reveal">{{ section.settings.eyebrow }}</p>
+    <h1 class="studio-page-h reveal d1">
+      {{ section.settings.headline }}<em>{{ section.settings.headline_em }}</em>
+    </h1>
+    {% if section.settings.standfirst != blank %}
+      <p class="studio-page-standfirst reveal d2">{{ section.settings.standfirst }}</p>
+    {% endif %}
+  </header>
+
+  <div class="studio-page-grid">
+    {% if collection.products.size > 0 %}
+      {% for product in collection.products %}
+        <a class="studio-piece reveal" href="{{ product.url }}">
+          <div class="studio-piece-img">
+            {% if product.featured_image %}
+              {{ product.featured_image | image_url: width: 1400 | image_tag:
+                 sizes: '(min-width: 960px) 46vw, 92vw',
+                 widths: '600,900,1200,1400',
+                 alt: product.title,
+                 loading: 'lazy' }}
+            {% else %}
+              <div class="studio-piece-ph">{{ product.title }}</div>
+            {% endif %}
+          </div>
+          <div class="studio-piece-info">
+            <p class="studio-piece-cat">{{ product.type | default: 'Open Edition · Studio' }}</p>
+            <p class="studio-piece-name">{{ product.title }}</p>
+            <p class="studio-piece-price">{{ product.price | money }}</p>
+          </div>
+        </a>
+      {% endfor %}
+    {% else %}
+      {% for block in section.blocks %}
+        <a class="studio-piece reveal" href="{{ block.settings.link }}">
+          <div class="studio-piece-img">
+            {% if block.settings.image != blank %}
+              {{ block.settings.image | image_url: width: 1400 | image_tag:
+                 sizes: '(min-width: 960px) 46vw, 92vw',
+                 widths: '600,900,1200,1400',
+                 alt: block.settings.name,
+                 loading: 'lazy' }}
+            {% else %}
+              <div class="studio-piece-ph">{{ block.settings.name }}</div>
+            {% endif %}
+          </div>
+          <div class="studio-piece-info">
+            <p class="studio-piece-cat">{{ block.settings.category }}</p>
+            <p class="studio-piece-name">{{ block.settings.name }}</p>
+            {% if block.settings.price != blank %}
+              <p class="studio-piece-price">{{ block.settings.price }}</p>
+            {% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  {% if section.settings.footer_note != blank %}
+    <p class="studio-page-foot">{{ section.settings.footer_note }}</p>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "The Studio — Collection",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Chapter 03 · The Studio" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "The part that isn't" },
+    { "type": "text", "id": "headline_em", "label": "Headline italic", "default": "useful." },
+    { "type": "textarea", "id": "standfirst", "label": "Standfirst",
+      "default": "Images we couldn't not make. Printed on paper that outlives the wall it hangs on. Open editions printed on demand via Prodigi; one limited edition per season, signed and numbered by hand." },
+    { "type": "text", "id": "footer_note", "label": "Footer note",
+      "default": "Prints ship separately — museum-grade paper, ready to frame. Limited editions are numbered and signed in Berlin." }
+  ],
+  "blocks": [
+    {
+      "type": "print",
+      "name": "Studio piece (fallback)",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "name", "label": "Name" },
+        { "type": "text", "id": "category", "label": "Category", "default": "Open Edition · Studio" },
+        { "type": "text", "id": "price", "label": "Price display" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 12
+}
+{% endschema %}

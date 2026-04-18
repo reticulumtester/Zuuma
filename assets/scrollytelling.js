@@ -42,14 +42,18 @@
     return window.matchMedia('(min-width: 961px)').matches;
   }
 
-  /* ---------- Hero bag parallax out ---------- */
+  /* ---------- Hero bag handoff into features ---------- */
   function buildHeroBagParallax() {
     const stage = document.querySelector('.hero-pin [data-bag-stage]');
     if (!stage) return;
     const gsap = window.gsap;
+
+    // Bag scales down + drifts up + fades as hero exits — reads as a handoff
+    // to the first feature-visual in the next section.
     gsap.to(stage, {
-      yPercent: -14,
-      scale: 1.06,
+      yPercent: -22,
+      scale: 0.84,
+      opacity: 0.55,
       ease: 'none',
       scrollTrigger: {
         trigger: '#hero',
@@ -58,6 +62,26 @@
         scrub: true
       }
     });
+
+    // First feature-visual of #bag-features enters oversized + transparent,
+    // settles to 1.0/1.0 as the section arrives — visually "catches" the hero bag.
+    const firstVisual = document.querySelector(
+      '#bag-features [data-feature-visual="1"]'
+    );
+    if (firstVisual) {
+      gsap.fromTo(firstVisual,
+        { scale: 1.12, opacity: 0 },
+        {
+          scale: 1, opacity: 1, ease: 'none',
+          scrollTrigger: {
+            trigger: '#bag-features',
+            start: 'top 90%',
+            end: 'top 30%',
+            scrub: true
+          }
+        }
+      );
+    }
   }
 
   /* ---------- Feature scene: sticky visual + narrative cards ---------- */

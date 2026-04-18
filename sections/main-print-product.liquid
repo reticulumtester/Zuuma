@@ -1,0 +1,115 @@
+{%- assign product = section.settings.product | default: product -%}
+<section id="print-pdp" class="print-pdp" data-zuuma-section="print-pdp">
+  <div class="print-pdp-grid">
+    <div class="print-pdp-image-col">
+      <div class="print-pdp-main-img" data-parallax-image>
+        {% if product and product.featured_image %}
+          {{ product.featured_image | image_url: width: 1600 | image_tag:
+             sizes: '(min-width: 960px) 56vw, 100vw',
+             widths: '600,900,1200,1600',
+             alt: product.title }}
+        {% elsif section.settings.override_image != blank %}
+          {{ section.settings.override_image | image_url: width: 1600 | image_tag:
+             sizes: '(min-width: 960px) 56vw, 100vw',
+             widths: '600,900,1200,1600',
+             alt: section.settings.title }}
+        {% else %}
+          <div class="print-pdp-ph">{{ section.settings.title | default: 'Zuuma Print' }}</div>
+        {% endif %}
+      </div>
+      {% if product and product.images.size > 1 %}
+        <div class="print-pdp-thumbs">
+          {% for image in product.images limit: 4 %}
+            {{ image | image_url: width: 400 | image_tag:
+               sizes: '22vw',
+               widths: '200,300,400',
+               alt: product.title,
+               loading: 'lazy',
+               class: 'print-pdp-thumb' }}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="print-pdp-info-col">
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h1 class="print-pdp-title">
+        {{ product.title | default: section.settings.title }}
+      </h1>
+      <p class="print-pdp-cat">{{ product.type | default: section.settings.category }}</p>
+
+      <div class="print-pdp-accent"></div>
+
+      <p class="print-pdp-copy">
+        {% if product and product.description != blank %}
+          {{ product.description }}
+        {% else %}
+          {{ section.settings.description }}
+        {% endif %}
+      </p>
+
+      {% if section.settings.edition_line != blank %}
+        <p class="print-pdp-edition">{{ section.settings.edition_line }}</p>
+      {% endif %}
+
+      <div class="print-pdp-cta">
+        {% if product %}
+          {% form 'product', product, data-add-to-cart: '' %}
+            {% if product.has_only_default_variant %}
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            {% else %}
+              <div class="print-pdp-variants">
+                <label for="print-variant">{{ product.options.first }}</label>
+                <select id="print-variant" name="id" class="print-pdp-variant-select">
+                  {% for variant in product.variants %}
+                    <option value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}>
+                      {{ variant.title }} — {{ variant.price | money }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </div>
+            {% endif %}
+            <button type="submit" class="btn-cart" {% unless product.available %}disabled{% endunless %}>
+              {% if product.available %}
+                <span>{{ 'products.product.add_to_cart' | t }}</span>
+                <span class="btn-cart-price">{{ product.price | money }}</span>
+              {% else %}
+                {{ 'products.product.sold_out' | t }}
+              {% endif %}
+            </button>
+          {% endform %}
+        {% else %}
+          <a class="btn-cart" href="{{ section.settings.cta_link | default: '#' }}">
+            <span>{{ section.settings.cta_label | default: 'Notify Me' }}</span>
+            {% if section.settings.price_display != blank %}
+              <span class="btn-cart-price">{{ section.settings.price_display }}</span>
+            {% endif %}
+          </a>
+        {% endif %}
+        <p class="p-note">{{ section.settings.note }}</p>
+      </div>
+
+      <a class="studio-link print-pdp-back" href="/collections/prints">← Back to The Studio</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Print — Product",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product (optional override)" },
+    { "type": "image_picker", "id": "override_image", "label": "Fallback image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Studio · Zuuma" },
+    { "type": "text", "id": "title", "label": "Fallback title", "default": "Untitled" },
+    { "type": "text", "id": "category", "label": "Fallback category", "default": "Open Edition · Studio" },
+    { "type": "textarea", "id": "description", "label": "Fallback description",
+      "default": "A single image, printed on museum-grade paper, shipped flat. Signed if limited, numbered either way." },
+    { "type": "text", "id": "edition_line", "label": "Edition line", "default": "Printed on demand via Prodigi · Ready to frame" },
+    { "type": "text", "id": "price_display", "label": "Fallback price", "default": "€49" },
+    { "type": "text", "id": "note", "label": "Note", "default": "Prints ship separately · Signed when limited" },
+    { "type": "text", "id": "cta_label", "label": "Fallback CTA label", "default": "Notify Me" },
+    { "type": "url", "id": "cta_link", "label": "Fallback CTA link" }
+  ]
+}
+{% endschema %}

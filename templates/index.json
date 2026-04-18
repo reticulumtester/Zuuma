@@ -20,7 +20,7 @@
         "eyebrow": "Chapter 01 · Anatomy",
         "headline": "The anatomy.",
         "headline_em": "Four decisions, nothing else.",
-        "subline": "Specs. The story is above."
+        "subline": "The specs, for the people who read the specs."
       },
       "blocks": {
         "feat-1": {
@@ -44,7 +44,7 @@
           "settings": {
             "label": "Inner Label",
             "value": "Numbered by hand",
-            "description": "The turquoise label is the only concession to colour. Every bag is signed, dated and numbered — yours is one of a kind by design."
+            "description": "The turquoise label is the only colour on the bag. Signed, dated and numbered by the person who sewed it — so they can find it again, and so can you."
           }
         },
         "feat-4": {
@@ -52,7 +52,7 @@
           "settings": {
             "label": "Dimensions",
             "value": "52 × 60 cm · 400 g",
-            "description": "Slim against the body when empty. Folds flat into a handbag, a drawer, a bike basket. Never in the way, always ready."
+            "description": "Slim against the body when empty. Folds into a handbag, a drawer, a bike basket. The only bag you own that doesn't ask for its own cupboard."
           }
         }
       },
@@ -95,9 +95,9 @@
       "type": "apron-features",
       "settings": {
         "eyebrow": "Chapter 02 · The Schürze",
-        "headline": "Made to be",
-        "headline_em": "worked in.",
-        "subline": "Kitchen, studio, workbench. Built from the same canvas, cut for every body."
+        "headline": "Worn indoors,",
+        "headline_em": "for hours.",
+        "subline": "What you put on when the door is closed and the work begins. Kitchen, studio, darkroom, workbench."
       },
       "blocks": {
         "a-1": {
@@ -105,7 +105,7 @@
           "settings": {
             "label": "Material",
             "value": "Heavy canvas",
-            "description": "The same honest canvas as the bag, dyed deep black. Takes paint, olive oil, flour, coffee — and a hot wash — without breaking character."
+            "description": "The same canvas as the bag, dyed deep black. Olive oil, tomato, gesso, espresso, turmeric — it takes them all and washes hot without losing shape."
           }
         },
         "a-2": {
@@ -113,7 +113,7 @@
           "settings": {
             "label": "Fit",
             "value": "One size, every body",
-            "description": "Adjustable neck, long waist ties. Wraps tall, short, broad, narrow — the same apron on a 1.60 m cook and a 1.95 m painter."
+            "description": "Adjustable neck strap, front-knotted waist ties over a metre long. Sits the same on a 1.60 m baker and a 1.95 m painter — the apron adapts, you don't."
           }
         },
         "a-3": {
@@ -121,7 +121,7 @@
           "settings": {
             "label": "Detail",
             "value": "Turquoise label",
-            "description": "Numbered, signed, made in Berlin. The same signature as the bag — so you know exactly what you are wearing."
+            "description": "Numbered, signed, made in Berlin. Same signature as the bag — so you know exactly what you are wearing."
           }
         }
       },
@@ -134,10 +134,10 @@
         "image_caption": "No. 001 · Schürze Black",
         "title": "Zuuma",
         "title_em": "Schürze.",
-        "copy": "From kitchen to studio. Heavy canvas, long ties, two deep pockets that actually hold things. The apron we wanted for ourselves — handmade in Berlin, numbered like the bag. Limited first run.",
-        "spec_line": "Heavy canvas · One size · Two deep pockets",
+        "copy": "Friday night it's four onions and a red wine stain. Sunday it's oil paint on the left thigh where you always wipe the brush. Tuesday it's flour at the elbow from a loaf that didn't rise. Heavy black canvas, long ties that wrap and knot at the front, two pockets deep enough for a phone, a pen, a wooden spoon. It learns your hands. Wash it hot, wear it harder — the apron looks better the year after you bought it than the day it arrived.",
+        "spec_line": "Heavy canvas · One size · Long front-tie · Two deep pockets",
         "price_display": "€79",
-        "note": "Limited run · Numbered · Made in Berlin",
+        "note": "Numbered · Handmade in Berlin · Hot wash, line dry",
         "cta_label": "Add to Cart",
         "cta_link": "/cart"
       }
@@ -145,9 +145,11 @@
     "prints": {
       "type": "prints",
       "settings": {
-        "title": "Also from",
-        "title_em": "Zuuma",
-        "link_label": "All prints →",
+        "eyebrow": "Chapter 03 · The Studio",
+        "title": "The part that isn't",
+        "title_em": "useful.",
+        "standfirst": "The bag and the Schürze are the Workshop — tested, numbered, made to disappear into your week. The Studio is the other half of us. Images we couldn't not make, printed on paper that outlives the wall it hangs on. No function to justify. This is Zuuma for its own sake.",
+        "link_label": "Enter the Studio →",
         "link_url": "/collections/prints"
       },
       "blocks": {
@@ -155,8 +157,8 @@
           "type": "print",
           "settings": {
             "name": "Palm Noir",
-            "category": "Art Print · Unlimited",
-            "sub": "Printed on demand · Prodigi",
+            "category": "Open Edition · Studio",
+            "sub": "A palm at 2 a.m., shot on the way home from a shoot.",
             "link": "/products/palm-noir"
           }
         },
@@ -164,8 +166,8 @@
           "type": "print",
           "settings": {
             "name": "Nocturnal Garden",
-            "category": "Art Print · Unlimited",
-            "sub": "Printed on demand · Prodigi",
+            "category": "Open Edition · Studio",
+            "sub": "A Berlin courtyard the week nothing bloomed. Black on black, green if you look twice.",
             "link": "/products/nocturnal-garden"
           }
         },
@@ -173,10 +175,10 @@
           "type": "print-limited",
           "settings": {
             "name": "Untitled No. 3",
-            "category": "Art Print · Limited Edition",
-            "sub": "50 pieces worldwide",
-            "note": "Available soon",
-            "cta_label": "Notify Me",
+            "category": "Edition of 50 · Signed",
+            "sub": "Fifty signed, numbered, and gone. One wall per country, roughly.",
+            "note": "Drops this season — first fifty names on the list get first refusal.",
+            "cta_label": "Join the Fifty",
             "cta_link": "#"
           }
         }
@@ -186,10 +188,10 @@
     "bundle": {
       "type": "bundle",
       "settings": {
-        "eyebrow": "The Pair",
+        "eyebrow": "The Workshop · Together",
         "headline": "Bag &",
         "headline_em": "Schürze.",
-        "copy": "The two objects we live in. Same canvas, same signature, same hands. Buy them together, save €18.",
+        "copy": "The two things we put on before the day starts. One goes on the shoulder, one gets tied at the waist — same black canvas, same turquoise label, same pair of hands in Kreuzberg. Bought together, they arrive in one box with sequential numbers. €18 back for keeping them together.",
         "item_1_label": "Zuuma Bag",
         "item_1_price": "€149",
         "item_2_label": "Zuuma Schürze",
@@ -198,13 +200,13 @@
         "total_display": "€210",
         "cta_label": "Add the Pair",
         "cta_link": "/cart",
-        "note": "Ships in one box · Numbered · Berlin"
+        "note": "One box, two numbers, sequential. Berlin."
       }
     },
     "marquee": {
       "type": "marquee",
       "settings": {
-        "items": "The bag you stop noticing · Handmade in Berlin · Numbered by hand · One bag, every day"
+        "items": "The bag you stop noticing · Handmade in Berlin · Numbered by the hands that sewed it · Canvas on one side, paper on the other · Function first, everything else earned"
       }
     },
     "faq": {
@@ -219,14 +221,14 @@
           "type": "qa",
           "settings": {
             "question": "How much can the Zuuma Bag carry?",
-            "answer": "The bag holds 30 litres and is designed to carry up to 10 kg. The 5 cm wide strap is extremely durable — worn crossbody, 7 kg feels like nothing. Honestly, your body will give out before the bag does."
+            "answer": "30 litres, rated to 10 kg, stress-tested well past it. At 7 kg on the crossbody strap you forget it's there. The strap is the last thing to fail, and it won't be soon."
           }
         },
         "q2": {
           "type": "qa",
           "settings": {
             "question": "Is it suitable for all body types and heights?",
-            "answer": "Yes — by design. The strap adjusts to 132 cm and works equally well for people over 1.80 m and those much shorter. The bag sits the same on everyone. That's intentional, not coincidence."
+            "answer": "The strap adjusts to 132 cm — equally at home on someone 1.60 m and someone over 1.90 m. One bag, many bodies, by design."
           }
         },
         "q3": {
