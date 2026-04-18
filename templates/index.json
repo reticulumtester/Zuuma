@@ -69,30 +69,6 @@
         "copy_2": "We made thirty-one prototypes of the Zuuma Bag. We kept the one we stopped noticing. Berlin, by hand, numbered — because the person who sewed it should be able to find it again."
       }
     },
-    "proof": {
-      "type": "proof",
-      "settings": {
-        "caption": "One bag · 9.8 kg of everyday",
-        "eyebrow": "Proof · What fits",
-        "headline": "Ten kilos.",
-        "headline_em": "One bag.",
-        "lede": "We weighed a Tuesday. Laptop, lunch, the yoga class, the grocery run, the bottle of wine for dinner. Nine point eight kilos. The bag carried all of it crossbody. The shoulder didn't complain.",
-        "total_label": "Total",
-        "total_weight": "9.8 kg",
-        "footnote": "Tested on a real Tuesday in Kreuzberg. No studio, no staging — just a day."
-      },
-      "blocks": {
-        "i-1": { "type": "item", "settings": { "name": "15\" laptop + charger", "weight": "2.1 kg" } },
-        "i-2": { "type": "item", "settings": { "name": "Yoga mat",                "weight": "1.2 kg" } },
-        "i-3": { "type": "item", "settings": { "name": "Groceries",               "weight": "2.4 kg" } },
-        "i-4": { "type": "item", "settings": { "name": "Bottle of wine",          "weight": "1.2 kg" } },
-        "i-5": { "type": "item", "settings": { "name": "Water bottle",            "weight": "0.6 kg" } },
-        "i-6": { "type": "item", "settings": { "name": "Hardcover book",          "weight": "0.9 kg" } },
-        "i-7": { "type": "item", "settings": { "name": "Jacket + scarf",          "weight": "0.8 kg" } },
-        "i-8": { "type": "item", "settings": { "name": "Keys, wallet, phone",     "weight": "0.6 kg" } }
-      },
-      "block_order": ["i-1", "i-2", "i-3", "i-4", "i-5", "i-6", "i-7", "i-8"]
-    },
     "bag-product": {
       "type": "bag-product",
       "settings": {
@@ -289,7 +265,6 @@
     "hero-bag",
     "bag-features",
     "about",
-    "proof",
     "bag-product",
     "media-statement",
     "apron-features",
