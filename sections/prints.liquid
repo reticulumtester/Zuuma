@@ -23,17 +23,13 @@
                    alt: block.settings.name,
                    loading: 'lazy' }}
               {% else %}
-                <div class="print-ph">
-                  <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                    <rect x="1" y="1" width="28" height="28" stroke="currentColor" stroke-width="0.75"/>
-                    {% if forloop.index == 1 %}
-                      <line x1="1" y1="1" x2="29" y2="29" stroke="currentColor" stroke-width="0.5"/>
-                    {% else %}
-                      <circle cx="15" cy="15" r="10" stroke="currentColor" stroke-width="0.5"/>
-                    {% endif %}
-                  </svg>
-                  {{ block.settings.name }}
-                </div>
+                {%- assign fallback_index = forloop.index | modulo: 2 -%}
+                {%- if fallback_index == 1 -%}
+                  {%- assign fallback_file = 'print-01.jpg' -%}
+                {%- else -%}
+                  {%- assign fallback_file = 'print-02.jpg' -%}
+                {%- endif -%}
+                <img src="{{ fallback_file | asset_url }}" alt="{{ block.settings.name }}" loading="lazy">
               {% endif %}
               <div class="print-hover-layer">
                 <span class="print-hover-btn">View Print</span>
@@ -56,12 +52,7 @@
                    alt: block.settings.name,
                    loading: 'lazy' }}
               {% else %}
-                <div class="print-ph">
-                  <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                    <polygon points="15,1 29,29 1,29" stroke="currentColor" stroke-width="0.75" fill="none"/>
-                  </svg>
-                  {{ block.settings.name }}
-                </div>
+                <img src="{{ 'print-03.jpg' | asset_url }}" alt="{{ block.settings.name }}" loading="lazy">
               {% endif %}
             </div>
             <div class="print-info">

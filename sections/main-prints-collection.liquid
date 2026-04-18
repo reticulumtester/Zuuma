@@ -33,6 +33,14 @@
       {% endfor %}
     {% else %}
       {% for block in section.blocks %}
+        {%- assign fallback_num = forloop.index | modulo: 3 -%}
+        {%- if fallback_num == 1 -%}
+          {%- assign fallback_file = 'print-01.jpg' -%}
+        {%- elsif fallback_num == 2 -%}
+          {%- assign fallback_file = 'print-02.jpg' -%}
+        {%- else -%}
+          {%- assign fallback_file = 'print-03.jpg' -%}
+        {%- endif -%}
         <a class="studio-piece reveal" href="{{ block.settings.link }}">
           <div class="studio-piece-img">
             {% if block.settings.image != blank %}
@@ -42,7 +50,7 @@
                  alt: block.settings.name,
                  loading: 'lazy' }}
             {% else %}
-              <div class="studio-piece-ph">{{ block.settings.name }}</div>
+              <img src="{{ fallback_file | asset_url }}" alt="{{ block.settings.name }}" loading="lazy">
             {% endif %}
           </div>
           <div class="studio-piece-info">
