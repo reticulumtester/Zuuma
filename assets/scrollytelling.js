@@ -414,15 +414,12 @@
     });
   }
 
-  /* ---------- Prints stagger ---------- */
+  /* ---------- Prints stagger ----------
+     Cards already carry the .reveal class, handled by the resilient
+     IntersectionObserver in theme.js — a GSAP 'from' here was leaving
+     cards at opacity:0 if ScrollTrigger hadn't fired yet. No-op now. */
   function buildPrintsReveal() {
-    const gsap = window.gsap;
-    const cards = document.querySelectorAll('#prints .print-card');
-    if (!cards.length) return;
-    gsap.from(cards, {
-      y: 50, opacity: 0, duration: 1, ease: 'power3.out', stagger: 0.12,
-      scrollTrigger: { trigger: '#prints', start: 'top 75%' }
-    });
+    return;
   }
 
   /* ---------- About accent bar ---------- */
