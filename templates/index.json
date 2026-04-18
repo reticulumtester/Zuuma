@@ -87,8 +87,11 @@
     "media-statement": {
       "type": "media-statement",
       "settings": {
-        "watermark": "Zuuma",
-        "caption": "Campaign · Spring 2025"
+        "eyebrow": "Interlude",
+        "line": "And a second object —",
+        "line_em": " tied at the waist.",
+        "sub": "Chapter 02 follows. Same canvas, same hands, closer to the work.",
+        "caption": ""
       }
     },
     "apron-features": {

@@ -1,21 +1,28 @@
-<section id="media-statement" data-zuuma-section="media-statement">
+<section id="media-statement"
+         class="media-statement{% if section.settings.media_image != blank %} has-media{% endif %}"
+         data-zuuma-section="media-statement">
   {% if section.settings.media_image != blank %}
-    <img class="media-bg" src="{{ section.settings.media_image | image_url: width: 2400 }}" alt="" data-parallax="0.2" loading="lazy">
-  {% else %}
-    <img class="media-bg" src="{{ 'bag-04.jpg' | asset_url }}" alt="" data-parallax="0.2" loading="lazy">
+    <img class="media-bg"
+         src="{{ section.settings.media_image | image_url: width: 2400 }}"
+         alt=""
+         data-parallax="0.2"
+         loading="lazy">
   {% endif %}
 
-  {% if section.settings.show_frame %}
-    <div class="media-placeholder-frame" aria-hidden="true">
-      <svg width="22" height="22" viewBox="0 0 18 18" fill="none">
-        <polygon points="5,2 16,9 5,16" fill="rgba(255,255,255,0.25)"/>
-      </svg>
-      <p>Campaign video or photo</p>
-    </div>
-  {% endif %}
+  <div class="media-inner">
+    {% if section.settings.eyebrow != blank %}
+      <p class="media-eyebrow">{{ section.settings.eyebrow }}</p>
+    {% endif %}
 
-  <div class="media-watermark">
-    <span data-parallax-text="0.3">{{ section.settings.watermark }}</span>
+    {% if section.settings.line != blank %}
+      <p class="media-line">
+        {{ section.settings.line }}<em>{{ section.settings.line_em }}</em>
+      </p>
+    {% endif %}
+
+    {% if section.settings.sub != blank %}
+      <p class="media-sub">{{ section.settings.sub }}</p>
+    {% endif %}
   </div>
 
   {% if section.settings.caption != blank %}
@@ -25,15 +32,23 @@
 
 {% schema %}
 {
-  "name": "Media statement",
+  "name": "Media / chapter break",
   "settings": [
-    { "type": "image_picker", "id": "media_image", "label": "Background image" },
-    { "type": "text", "id": "watermark", "label": "Watermark word", "default": "Zuuma" },
-    { "type": "text", "id": "caption", "label": "Corner caption", "default": "Campaign · Spring 2025" },
-    { "type": "checkbox", "id": "show_frame", "label": "Show placeholder frame", "default": false }
+    { "type": "header", "content": "Typography (shown when no image is set)" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow",
+      "default": "Interlude" },
+    { "type": "text", "id": "line", "label": "Line",
+      "default": "And a second object —" },
+    { "type": "text", "id": "line_em", "label": "Line italic",
+      "default": " tied at the waist." },
+    { "type": "textarea", "id": "sub", "label": "Subline",
+      "default": "Chapter 02 follows. Same canvas, same hands, closer to the work." },
+    { "type": "text", "id": "caption", "label": "Corner caption" },
+    { "type": "header", "content": "Optional media (leave blank for typography-only)" },
+    { "type": "image_picker", "id": "media_image", "label": "Background image / video still" }
   ],
   "presets": [
-    { "name": "Media statement", "category": "Zuuma" }
+    { "name": "Chapter break", "category": "Zuuma" }
   ]
 }
 {% endschema %}
