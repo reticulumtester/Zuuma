@@ -188,24 +188,6 @@
       },
       "block_order": ["p-1", "p-2", "p-3"]
     },
-    "bundle": {
-      "type": "bundle",
-      "settings": {
-        "eyebrow": "The Workshop · Together",
-        "headline": "Bag &",
-        "headline_em": "Schürze.",
-        "copy": "The two things we put on before the day starts. One goes on the shoulder, one gets tied at the waist — same black canvas, same turquoise label, same pair of hands in Kreuzberg. Bought together, they arrive in one box with sequential numbers. €18 back for keeping them together.",
-        "item_1_label": "Zuuma Bag",
-        "item_1_price": "€149",
-        "item_2_label": "Zuuma Schürze",
-        "item_2_price": "€79",
-        "total_strike": "€228",
-        "total_display": "€210",
-        "cta_label": "Add the Pair",
-        "cta_link": "/cart",
-        "note": "One box, two numbers, sequential. Berlin."
-      }
-    },
     "faq": {
       "type": "faq",
       "settings": {
@@ -269,7 +251,6 @@
     "apron-features",
     "apron-product",
     "prints",
-    "bundle",
     "faq"
   ]
 }
