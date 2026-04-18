@@ -112,6 +112,24 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
+  function initScrollCue() {
+    const cue = document.querySelector('[data-scroll-cue]');
+    if (!cue) return;
+    // Surface the cue reliably, regardless of GSAP / scrollytelling state.
+    setTimeout(() => cue.classList.add('is-in'), 900);
+
+    const dismiss = () => cue.classList.add('is-gone');
+    const threshold = () => Math.min(120, window.innerHeight * 0.12);
+    const onScroll = () => {
+      if (window.scrollY > threshold()) {
+        dismiss();
+        window.removeEventListener('scroll', onScroll);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    cue.addEventListener('click', dismiss);
+  }
+
   function initAccentBar() {
     const bars = document.querySelectorAll('.about-accent-bar');
     if (!bars.length) return;
@@ -163,6 +181,7 @@
     initHeroSignatureFallback();
     initFaq();
     initHeaderScroll();
+    initScrollCue();
     initAccentBar();
     initAddToCart();
   });
