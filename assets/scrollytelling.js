@@ -169,26 +169,99 @@
     });
   }
 
-  /* ---------- Mask reveal on italic emphasis ---------- */
-  function buildMaskReveal() {
+  /* ---------- Word-split headline reveals (scroll-in, per-word y + blur + fade) ---------- */
+  function splitWordsInto(el) {
+    // Walk children; wrap every text-node word in .zm-word > .zm-word-inner.
+    // Preserves inline tags (like <em>) so italics still work.
+    const words = [];
+    function walk(node) {
+      const children = Array.from(node.childNodes);
+      for (const child of children) {
+        if (child.nodeType === 3) {
+          const text = child.nodeValue;
+          if (!text) continue;
+          const frag = document.createDocumentFragment();
+          const parts = text.split(/(\s+)/);
+          parts.forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) {
+              frag.appendChild(document.createTextNode(part));
+            } else {
+              const w = document.createElement('span');
+              w.className = 'zm-word';
+              const inner = document.createElement('span');
+              inner.className = 'zm-word-inner';
+              inner.textContent = part;
+              w.appendChild(inner);
+              frag.appendChild(w);
+              words.push(inner);
+            }
+          });
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === 1) {
+          if (child.tagName === 'BR') continue;
+          walk(child);
+        }
+      }
+    }
+    walk(el);
+    return words;
+  }
+
+  function buildHeadlineReveals() {
+    const selectors = [
+      '.hero-headline',
+      '.section-h',
+      '.about-headline',
+      '.p-title',
+      '.prints-head h2',
+      '.media-line',
+      '.studio-page-h',
+      '.print-pdp-title'
+    ].join(', ');
+
     const ScrollTrigger = window.ScrollTrigger;
-    const selectors = '.hero-headline em, .section-h em, .p-title em, .about-headline em, .prints-head em';
+    const gsap = window.gsap;
 
     document.querySelectorAll(selectors).forEach(el => {
-      if (el.dataset.maskWrapped === '1') return;
-      el.dataset.maskWrapped = '1';
-      const inner = document.createElement('span');
-      inner.className = 'mask-reveal-inner';
-      while (el.firstChild) inner.appendChild(el.firstChild);
-      el.appendChild(inner);
-      el.classList.add('mask-reveal');
+      if (el.dataset.zmSplit === '1') return;
+      el.dataset.zmSplit = '1';
+      el.classList.add('zm-split');
+      const words = splitWordsInto(el);
+      if (!words.length) return;
 
-      ScrollTrigger.create({
-        trigger: el,
-        start: 'top 88%',
-        once: true,
-        onEnter: () => el.classList.add('is-in')
-      });
+      if (gsap && ScrollTrigger) {
+        // Use GSAP for a finer stagger & ease; also lets us reliably disable the CSS fallback.
+        gsap.set(words, { yPercent: 110, opacity: 0, filter: 'blur(10px)' });
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top 88%',
+          once: true,
+          onEnter: () => {
+            el.classList.add('is-in');
+            gsap.to(words, {
+              yPercent: 0,
+              opacity: 1,
+              filter: 'blur(0px)',
+              duration: 1.05,
+              ease: 'power3.out',
+              stagger: 0.045,
+              overwrite: true
+            });
+          }
+        });
+      } else {
+        // No GSAP — let the CSS transition run when we add .is-in
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              el.classList.add('is-in');
+              io.disconnect();
+            }
+          });
+        }, { threshold: 0.15 });
+        io.observe(el);
+      }
     });
   }
 
@@ -259,7 +332,7 @@
         document.querySelectorAll('[data-feature-scene]').forEach(buildFeatureScene);
       }
       buildValueCountUp();
-      buildMaskReveal();
+      buildHeadlineReveals();
       buildProductParallax();
       buildParallax();
       buildPrintsReveal();

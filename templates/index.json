@@ -18,9 +18,9 @@
       "type": "bag-features",
       "settings": {
         "eyebrow": "Chapter 01 · Anatomy",
-        "headline": "The anatomy.",
-        "headline_em": "Four decisions, nothing else.",
-        "subline": "The specs, for the people who read the specs."
+        "headline": "Four decisions",
+        "headline_em": "made the bag.",
+        "subline": ""
       },
       "blocks": {
         "feat-1": {
@@ -87,10 +87,10 @@
     "media-statement": {
       "type": "media-statement",
       "settings": {
-        "eyebrow": "Interlude",
-        "line": "And a second object —",
-        "line_em": " tied at the waist.",
-        "sub": "Chapter 02 follows. Same canvas, same hands, closer to the work.",
+        "eyebrow": "Next · The Schürze",
+        "line": "When the door closes,",
+        "line_em": " the work begins.",
+        "sub": "Same canvas, same hands. Made for the hours nobody sees.",
         "caption": ""
       }
     },
@@ -149,9 +149,9 @@
       "type": "prints",
       "settings": {
         "eyebrow": "Chapter 03 · The Studio",
-        "title": "The part that isn't",
-        "title_em": "useful.",
-        "standfirst": "The bag and the Schürze are the Workshop — tested, numbered, made to disappear into your week. The Studio is the other half of us. Images we couldn't not make, printed on paper that outlives the wall it hangs on. No function to justify. This is Zuuma for its own sake.",
+        "title": "For the love",
+        "title_em": "of the image.",
+        "standfirst": "The bag and the Schürze are the Workshop — built, tested, numbered. The Studio is what we make when nothing has to be solved. Pictures we couldn't not make, printed on paper that outlives the wall it hangs on. Some things don't need a reason — they're just what the hands do when the day is done.",
         "link_label": "Enter the Studio →",
         "link_url": "/collections/prints"
       },
