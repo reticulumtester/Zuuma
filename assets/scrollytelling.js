@@ -231,25 +231,35 @@
       if (!words.length) return;
 
       if (gsap && ScrollTrigger) {
-        // Use GSAP for a finer stagger & ease; also lets us reliably disable the CSS fallback.
         gsap.set(words, { yPercent: 110, opacity: 0, filter: 'blur(10px)' });
-        ScrollTrigger.create({
-          trigger: el,
-          start: 'top 88%',
-          once: true,
-          onEnter: () => {
-            el.classList.add('is-in');
-            gsap.to(words, {
-              yPercent: 0,
-              opacity: 1,
-              filter: 'blur(0px)',
-              duration: 1.05,
-              ease: 'power3.out',
-              stagger: 0.045,
-              overwrite: true
-            });
-          }
-        });
+
+        const reveal = () => {
+          el.classList.add('is-in');
+          gsap.to(words, {
+            yPercent: 0,
+            opacity: 1,
+            filter: 'blur(0px)',
+            duration: 1.05,
+            ease: 'power3.out',
+            stagger: 0.045,
+            overwrite: 'auto'
+          });
+        };
+
+        // If the element is already within (or above) the trigger zone at load,
+        // ScrollTrigger won't fire onEnter for a downward crossing — kick it off manually.
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.92) {
+          // Defer one frame so fonts/layout settle before measuring word heights
+          requestAnimationFrame(() => requestAnimationFrame(reveal));
+        } else {
+          ScrollTrigger.create({
+            trigger: el,
+            start: 'top 88%',
+            once: true,
+            onEnter: reveal
+          });
+        }
       } else {
         // No GSAP — let the CSS transition run when we add .is-in
         const io = new IntersectionObserver((entries) => {
@@ -265,17 +275,116 @@
     });
   }
 
-  /* ---------- Product image soft parallax ---------- */
+  /* ---------- Product image scroll-driven zoom + parallax ---------- */
   function buildProductParallax() {
     const gsap = window.gsap;
     document.querySelectorAll('[data-parallax-image] img').forEach(img => {
       gsap.fromTo(img,
-        { yPercent: -4, scale: 1.04 },
+        { yPercent: -6, scale: 1.12 },
         {
-          yPercent: 4, scale: 1, ease: 'none',
-          scrollTrigger: { trigger: img.closest('[data-parallax-image]'), start: 'top bottom', end: 'bottom top', scrub: true }
+          yPercent: 6, scale: 1, ease: 'none',
+          scrollTrigger: { trigger: img.closest('[data-parallax-image]'), start: 'top bottom', end: 'bottom top', scrub: 0.6 }
         }
       );
+    });
+  }
+
+  /* ---------- Hero bag clip-path entrance (load-time cinematic reveal) ---------- */
+  function buildHeroEntrance() {
+    const gsap = window.gsap;
+    const stage = document.querySelector('[data-bag-stage]');
+    if (!stage) return;
+    const img = stage.querySelector('img');
+    if (!img) return;
+
+    const number = document.querySelector('.hero-number-bg');
+    const run = () => {
+      gsap.fromTo(stage,
+        { clipPath: 'inset(100% 0% 0% 0%)', scale: 1.06, opacity: 1 },
+        { clipPath: 'inset(0% 0% 0% 0%)', scale: 1, duration: 1.4, ease: 'expo.out' }
+      );
+      if (number) {
+        gsap.fromTo(number,
+          { opacity: 0, letterSpacing: '0.4em' },
+          { opacity: 1, letterSpacing: '0em', duration: 1.6, ease: 'power3.out', delay: 0.35 }
+        );
+      }
+    };
+
+    if (img.complete) run();
+    else img.addEventListener('load', run, { once: true });
+  }
+
+  /* ---------- Character-by-character reveal (the about quote) ---------- */
+  function splitCharsInto(el) {
+    const chars = [];
+    function walk(node) {
+      const children = Array.from(node.childNodes);
+      for (const child of children) {
+        if (child.nodeType === 3) {
+          const text = child.nodeValue;
+          if (!text) continue;
+          const frag = document.createDocumentFragment();
+          // Split into words to preserve wrapping, then chars inside each word.
+          const parts = text.split(/(\s+)/);
+          parts.forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) {
+              frag.appendChild(document.createTextNode(part));
+              return;
+            }
+            const wordSpan = document.createElement('span');
+            wordSpan.className = 'zm-char-word';
+            for (const ch of part) {
+              const c = document.createElement('span');
+              c.className = 'zm-char';
+              c.textContent = ch;
+              wordSpan.appendChild(c);
+              chars.push(c);
+            }
+            frag.appendChild(wordSpan);
+          });
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === 1 && child.tagName !== 'BR') {
+          walk(child);
+        }
+      }
+    }
+    walk(el);
+    return chars;
+  }
+
+  function buildCharReveals() {
+    const gsap = window.gsap;
+    const ScrollTrigger = window.ScrollTrigger;
+    document.querySelectorAll('.about-quote').forEach(el => {
+      if (el.dataset.zmChars === '1') return;
+      el.dataset.zmChars = '1';
+      el.classList.add('zm-chars');
+      const chars = splitCharsInto(el);
+      if (!chars.length) return;
+
+      if (!gsap || !ScrollTrigger) return; // CSS already leaves text visible
+
+      gsap.set(chars, { opacity: 0, y: '0.4em', filter: 'blur(6px)' });
+
+      const reveal = () => {
+        gsap.to(chars, {
+          opacity: 1, y: 0, filter: 'blur(0px)',
+          duration: 0.9, ease: 'power3.out',
+          stagger: { each: 0.012, from: 'start' },
+          overwrite: 'auto'
+        });
+      };
+
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.9) {
+        requestAnimationFrame(() => requestAnimationFrame(reveal));
+      } else {
+        ScrollTrigger.create({
+          trigger: el, start: 'top 82%', once: true, onEnter: reveal
+        });
+      }
     });
   }
 
@@ -331,8 +440,10 @@
         buildHeroBagParallax();
         document.querySelectorAll('[data-feature-scene]').forEach(buildFeatureScene);
       }
+      buildHeroEntrance();
       buildValueCountUp();
       buildHeadlineReveals();
+      buildCharReveals();
       buildProductParallax();
       buildParallax();
       buildPrintsReveal();

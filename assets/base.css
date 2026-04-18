@@ -130,9 +130,14 @@ button {
     filter 1.1s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
+/* Character-split reveal (used on pull quote) */
+.zm-chars .zm-char-word { display: inline-block; white-space: nowrap; }
+.zm-chars .zm-char { display: inline-block; will-change: transform, opacity, filter; }
+
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; }
   .zm-word-inner { transform: none !important; opacity: 1 !important; filter: none !important; transition: none !important; }
+  .zm-chars .zm-char { transform: none !important; opacity: 1 !important; filter: none !important; transition: none !important; }
   html.lenis.lenis-smooth { scroll-behavior: smooth; }
   * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
 }
