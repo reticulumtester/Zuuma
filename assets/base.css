@@ -97,8 +97,8 @@ button {
 .d3 { transition-delay: 0.24s; }
 .d4 { transition-delay: 0.32s; }
 
-/* Word split reveal — applied by JS to major headlines */
-/* Words own the animation; neutralize the container's .reveal transform/blur. */
+/* Word split reveal — JS applies initial hidden state via inline style.
+   Keeping the CSS defaults "visible" means a JS failure never strands a headline. */
 .zm-split, .reveal.zm-split {
   opacity: 1 !important;
   transform: none !important;
@@ -115,19 +115,7 @@ button {
 }
 .zm-word-inner {
   display: inline-block;
-  transform: translateY(110%);
-  opacity: 0;
-  filter: blur(10px);
   will-change: transform, opacity, filter;
-}
-.zm-split.is-in .zm-word-inner {
-  transform: translateY(0);
-  opacity: 1;
-  filter: blur(0);
-  transition:
-    transform 1.1s cubic-bezier(0.2, 0.8, 0.2, 1),
-    opacity 1.1s cubic-bezier(0.2, 0.8, 0.2, 1),
-    filter 1.1s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 /* Character-split reveal (used on pull quote) */

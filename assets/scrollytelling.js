@@ -220,8 +220,8 @@
       '.print-pdp-title'
     ].join(', ');
 
-    const ScrollTrigger = window.ScrollTrigger;
     const gsap = window.gsap;
+    if (!gsap) return; // no GSAP => leave text untouched; .reveal + IO handles visibility
 
     document.querySelectorAll(selectors).forEach(el => {
       if (el.dataset.zmSplit === '1') return;
@@ -230,48 +230,43 @@
       const words = splitWordsInto(el);
       if (!words.length) return;
 
-      if (gsap && ScrollTrigger) {
-        gsap.set(words, { yPercent: 110, opacity: 0, filter: 'blur(10px)' });
+      // Hide via inline style. Pure JS — if anything below fails, words stay visible.
+      gsap.set(words, { yPercent: 110, opacity: 0, filter: 'blur(10px)' });
 
-        const reveal = () => {
-          el.classList.add('is-in');
-          gsap.to(words, {
-            yPercent: 0,
-            opacity: 1,
-            filter: 'blur(0px)',
-            duration: 1.05,
-            ease: 'power3.out',
-            stagger: 0.045,
-            overwrite: 'auto'
-          });
-        };
+      let revealed = false;
+      const reveal = () => {
+        if (revealed) return;
+        revealed = true;
+        el.classList.add('is-in');
+        gsap.to(words, {
+          yPercent: 0,
+          opacity: 1,
+          filter: 'blur(0px)',
+          duration: 1.05,
+          ease: 'power3.out',
+          stagger: 0.045,
+          overwrite: 'auto'
+        });
+      };
 
-        // If the element is already within (or above) the trigger zone at load,
-        // ScrollTrigger won't fire onEnter for a downward crossing — kick it off manually.
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.92) {
-          // Defer one frame so fonts/layout settle before measuring word heights
-          requestAnimationFrame(() => requestAnimationFrame(reveal));
-        } else {
-          ScrollTrigger.create({
-            trigger: el,
-            start: 'top 88%',
-            once: true,
-            onEnter: reveal
-          });
-        }
-      } else {
-        // No GSAP — let the CSS transition run when we add .is-in
-        const io = new IntersectionObserver((entries) => {
+      // Primary trigger: IntersectionObserver (fires reliably on scroll-in AND on load
+      // if the element is already in view).
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(entries => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              el.classList.add('is-in');
+              reveal();
               io.disconnect();
             }
           });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
         io.observe(el);
+      } else {
+        reveal();
       }
+
+      // Safety net: force reveal after 4s so nothing ever stays permanently hidden.
+      setTimeout(reveal, 4000);
     });
   }
 
@@ -364,11 +359,14 @@
       const chars = splitCharsInto(el);
       if (!chars.length) return;
 
-      if (!gsap || !ScrollTrigger) return; // CSS already leaves text visible
+      if (!gsap) return; // CSS leaves text visible by default
 
       gsap.set(chars, { opacity: 0, y: '0.4em', filter: 'blur(6px)' });
 
+      let revealed = false;
       const reveal = () => {
+        if (revealed) return;
+        revealed = true;
         gsap.to(chars, {
           opacity: 1, y: 0, filter: 'blur(0px)',
           duration: 0.9, ease: 'power3.out',
@@ -377,14 +375,21 @@
         });
       };
 
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.9) {
-        requestAnimationFrame(() => requestAnimationFrame(reveal));
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              reveal();
+              io.disconnect();
+            }
+          });
+        }, { threshold: 0.1 });
+        io.observe(el);
       } else {
-        ScrollTrigger.create({
-          trigger: el, start: 'top 82%', once: true, onEnter: reveal
-        });
+        reveal();
       }
+
+      setTimeout(reveal, 4000);
     });
   }
 
