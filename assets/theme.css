@@ -67,7 +67,7 @@
 
 .hero-image-side {
   position: relative;
-  background: #e2dfd9;
+  background: var(--off-white);
   overflow: hidden;
 }
 

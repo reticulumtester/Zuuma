@@ -48,12 +48,12 @@
     if (!stage) return;
     const gsap = window.gsap;
 
-    // Bag scales down + drifts up + fades as hero exits — reads as a handoff
-    // to the first feature-visual in the next section.
+    // Bag scales down + drifts up as hero exits — reads as a handoff
+    // to the first feature-visual in the next section. No opacity fade
+    // (reads as accidental against a mismatched background).
     gsap.to(stage, {
-      yPercent: -22,
-      scale: 0.84,
-      opacity: 0.55,
+      yPercent: -18,
+      scale: 0.88,
       ease: 'none',
       scrollTrigger: {
         trigger: '#hero',
@@ -63,16 +63,16 @@
       }
     });
 
-    // First feature-visual of #bag-features enters oversized + transparent,
-    // settles to 1.0/1.0 as the section arrives — visually "catches" the hero bag.
+    // First feature-visual of #bag-features enters slightly oversized,
+    // settles to 1.0 as the section arrives — visually "catches" the hero bag.
     const firstVisual = document.querySelector(
       '#bag-features [data-feature-visual="1"]'
     );
     if (firstVisual) {
       gsap.fromTo(firstVisual,
-        { scale: 1.12, opacity: 0 },
+        { scale: 1.08 },
         {
-          scale: 1, opacity: 1, ease: 'none',
+          scale: 1, ease: 'none',
           scrollTrigger: {
             trigger: '#bag-features',
             start: 'top 90%',
