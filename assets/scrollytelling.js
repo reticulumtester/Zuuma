@@ -231,7 +231,7 @@
       if (!words.length) return;
 
       // Hide via inline style. Pure JS — if anything below fails, words stay visible.
-      gsap.set(words, { yPercent: 110, opacity: 0, filter: 'blur(10px)' });
+      gsap.set(words, { yPercent: 115, opacity: 0, filter: 'blur(10px)' });
 
       let revealed = false;
       const reveal = () => {
@@ -242,9 +242,9 @@
           yPercent: 0,
           opacity: 1,
           filter: 'blur(0px)',
-          duration: 1.05,
-          ease: 'power3.out',
-          stagger: 0.045,
+          duration: 1.15,
+          ease: 'expo.out',
+          stagger: 0.055,
           overwrite: 'auto'
         });
       };
@@ -284,7 +284,7 @@
     });
   }
 
-  /* ---------- Hero bag clip-path entrance (load-time cinematic reveal) ---------- */
+  /* ---------- Hero bag clip-path entrance + signature choreography ---------- */
   function buildHeroEntrance() {
     const gsap = window.gsap;
     const stage = document.querySelector('[data-bag-stage]');
@@ -292,17 +292,57 @@
     const img = stage.querySelector('img');
     if (!img) return;
 
-    const number = document.querySelector('.hero-number-bg');
+    const imageSide  = document.querySelector('.hero-image-side');
+    const number     = document.querySelector('.hero-number-bg');
+    const chapter    = document.querySelector('.hero-chapter');
+    const eyebrow    = document.querySelector('.hero-eyebrow[data-track-in]');
+    const divider    = document.querySelector('.hero-divider[data-draw-rule]');
+    const scrollCue  = document.querySelector('.hero-scroll-cue');
+    const primaryCta = document.querySelector('#hero .btn-primary.has-glint');
+
     const run = () => {
+      // Curtain reveal on the bag image with a slow settle
       gsap.fromTo(stage,
-        { clipPath: 'inset(100% 0% 0% 0%)', scale: 1.06, opacity: 1 },
-        { clipPath: 'inset(0% 0% 0% 0%)', scale: 1, duration: 1.4, ease: 'expo.out' }
+        { clipPath: 'inset(100% 0% 0% 0%)', scale: 1.08, opacity: 1 },
+        { clipPath: 'inset(0% 0% 0% 0%)', scale: 1, duration: 1.6, ease: 'expo.out' }
       );
+
+      // Thin accent thread + corner frame lines come alive after the curtain settles
+      if (imageSide) {
+        imageSide.classList.add('is-lit');
+      }
+
+      // Background "01" numeric: scale + letter-spacing collapse
       if (number) {
         gsap.fromTo(number,
-          { opacity: 0, letterSpacing: '0.4em' },
-          { opacity: 1, letterSpacing: '0em', duration: 1.6, ease: 'power3.out', delay: 0.35 }
+          { opacity: 0, letterSpacing: '0.4em', scale: 0.9 },
+          { opacity: 1, letterSpacing: '0em', scale: 1, duration: 1.8, ease: 'power3.out', delay: 0.4 }
         );
+      }
+
+      // Editorial chapter marker fades in above headline
+      if (chapter) {
+        setTimeout(() => chapter.classList.add('is-in'), 300);
+      }
+
+      // Tracking-in eyebrow (CSS handles the transition)
+      if (eyebrow) {
+        setTimeout(() => eyebrow.classList.add('is-in'), 480);
+      }
+
+      // Divider draws in (CSS transition)
+      if (divider) {
+        setTimeout(() => divider.classList.add('is-in'), 700);
+      }
+
+      // Glint sweeps across the primary CTA once
+      if (primaryCta) {
+        setTimeout(() => primaryCta.classList.add('is-lit'), 1100);
+      }
+
+      // Scroll cue fades in last
+      if (scrollCue) {
+        setTimeout(() => scrollCue.classList.add('is-in'), 1500);
       }
     };
 

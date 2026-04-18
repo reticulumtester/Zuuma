@@ -35,7 +35,7 @@
         const target = document.querySelector(href);
         if (!target) return;
         e.preventDefault();
-        lenis.scrollTo(target, { offset: -80, duration: 1.2 });
+        lenis.scrollTo(target, { offset: -96, duration: 1.2 });
       });
     });
 
@@ -62,6 +62,32 @@
     setTimeout(() => {
       document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('in'));
     }, 120);
+  }
+
+  function initHeroSignatureFallback() {
+    // If GSAP / scrollytelling fails to run, make sure hero ceremony elements
+    // still surface. Scrollytelling will also toggle these on success — harmless.
+    const runFallback = () => {
+      const targets = [
+        '.hero-chapter',
+        '.hero-eyebrow[data-track-in]',
+        '.hero-divider[data-draw-rule]',
+        '.hero-scroll-cue',
+        '.hero-image-side'
+      ];
+      targets.forEach(sel => {
+        const el = document.querySelector(sel);
+        if (!el) return;
+        if (sel === '.hero-image-side') el.classList.add('is-lit');
+        else el.classList.add('is-in');
+      });
+      const cta = document.querySelector('#hero .btn-primary.has-glint');
+      if (cta) cta.classList.add('is-lit');
+    };
+    // If no scrollytelling will run, run fallback immediately on a short delay.
+    // If scrollytelling runs, it runs its own choreography which adds these
+    // classes first — the fallback then becomes a no-op (classList.add is idempotent).
+    setTimeout(runFallback, window.ZuumaMotion.scrollytelling ? 2600 : 200);
   }
 
   function initFaq() {
@@ -134,6 +160,7 @@
   onReady(() => {
     initLenis();
     initReveals();
+    initHeroSignatureFallback();
     initFaq();
     initHeaderScroll();
     initAccentBar();

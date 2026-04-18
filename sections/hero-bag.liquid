@@ -14,18 +14,29 @@
         {% endif %}
       </div>
       <div class="hero-number-bg" aria-hidden="true">01</div>
+      <div class="hero-frame" aria-hidden="true">
+        <span class="hero-frame-line hero-frame-line--t"></span>
+        <span class="hero-frame-line hero-frame-line--b"></span>
+        <span class="hero-frame-line hero-frame-line--l"></span>
+        <span class="hero-frame-line hero-frame-line--r"></span>
+      </div>
     </div>
 
     <div class="hero-content-side">
-      <p class="hero-eyebrow reveal">{{ section.settings.eyebrow }}</p>
-      <h1 class="hero-headline reveal d1">
+      <div class="hero-chapter" aria-hidden="true">
+        <span class="hero-chapter-num">01</span>
+        <span class="hero-chapter-rule"></span>
+        <span class="hero-chapter-label">Chapter · The Bag</span>
+      </div>
+      <p class="hero-eyebrow" data-track-in>{{ section.settings.eyebrow }}</p>
+      <h1 class="hero-headline">
         {{ section.settings.headline }}<em>{{ section.settings.headline_em }}</em>
       </h1>
-      <div class="hero-divider reveal d2"></div>
+      <div class="hero-divider" data-draw-rule></div>
       <p class="hero-desc reveal d2">{{ section.settings.description }}</p>
       <div class="hero-actions reveal d3">
         {% if section.settings.cta_label != blank %}
-          <a href="{{ section.settings.cta_link }}" class="btn-primary">
+          <a href="{{ section.settings.cta_link }}" class="btn-primary has-glint">
             <span class="btn-primary-label">{{ section.settings.cta_label }}</span>
             {% if section.settings.cta_price != blank %}
               <span class="btn-primary-price">{{ section.settings.cta_price }}</span>
@@ -37,6 +48,11 @@
         {% endif %}
       </div>
     </div>
+
+    <a href="#bag-features" class="hero-scroll-cue" aria-label="Scroll to next section">
+      <span class="hero-scroll-word">Scroll</span>
+      <span class="hero-scroll-rail"><span class="hero-scroll-dot"></span></span>
+    </a>
   </section>
 </div>
 

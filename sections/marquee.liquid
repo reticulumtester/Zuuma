@@ -4,7 +4,7 @@
     {% for i in (1..2) %}
       {% for item in items %}
         <span class="m-item">{{ item | strip }}</span>
-        <span class="m-item"><span class="m-dot">✦</span></span>
+        <span class="m-item" aria-hidden="true"><span class="m-dot">✦</span></span>
       {% endfor %}
     {% endfor %}
   </div>
@@ -12,17 +12,17 @@
 
 {% schema %}
 {
-  "name": "Marquee",
+  "name": "Marquee / Announcement",
   "settings": [
     {
       "type": "text",
       "id": "items",
       "label": "Items (separate with ·)",
-      "default": "The bag you stop noticing · Handmade in Berlin · Numbered by hand · One bag, every day"
+      "default": "Made in Berlin · Handmade & Numbered · 100% Cotton Canvas · Ships Worldwide · Free Returns in Europe"
     }
   ],
   "presets": [
-    { "name": "Marquee", "category": "Zuuma" }
+    { "name": "Marquee / Announcement", "category": "Zuuma" }
   ]
 }
 {% endschema %}

@@ -206,12 +206,6 @@
         "note": "One box, two numbers, sequential. Berlin."
       }
     },
-    "marquee": {
-      "type": "marquee",
-      "settings": {
-        "items": "The bag you stop noticing · Handmade in Berlin · Numbered by the hands that sewed it · Canvas on one side, paper on the other · Function first, everything else earned"
-      }
-    },
     "faq": {
       "type": "faq",
       "settings": {
@@ -276,7 +270,6 @@
     "apron-product",
     "prints",
     "bundle",
-    "marquee",
     "faq"
   ]
 }
