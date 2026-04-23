@@ -79,7 +79,7 @@
         "copy": "Monday it's a laptop and a lunch. Wednesday a yoga mat, a bottle of wine, the dry-cleaning. Saturday the market — two kilos of tomatoes, bread under one arm, flowers under the other. Deep black cotton canvas, screen-printed in Berlin, signed inside. The bag stops being a thing you carry. It becomes the day you had.",
         "spec_line": "30 L · 10 kg max · 400 g · 52 × 60 cm",
         "price_display": "€90",
-        "note": "Numbered · Washable to 30° · Free shipping from €150",
+        "note": "Numbered · Washable to 30° · Free shipping within Germany from €150",
         "cta_label": "Add to Cart",
         "cta_link": "/cart"
       }
@@ -140,7 +140,7 @@
         "copy": "There's not much to tell you about the Zuuma Schürze that you can't see immediately. Extremely strong. Long-lasting. Washable. And — mixed with our attitude — an elegant cut that doesn't try too hard. Feel comfortable and well-dressed in your kitchen, at the grill, in the studio. The hours nobody sees are the ones you want to enjoy most.",
         "spec_line": "Heavy canvas · One size · Long front-tie · Two deep pockets",
         "price_display": "€75",
-        "note": "Numbered · Handmade in Berlin · Hot wash · Free shipping from €150",
+        "note": "Numbered · Handmade in Berlin · Hot wash · Free shipping within Germany from €150",
         "cta_label": "Add to Cart",
         "cta_link": "/cart"
       }
@@ -276,7 +276,7 @@
           "type": "qa",
           "settings": {
             "question": "Are the prints shipped separately?",
-            "answer": "Yes. Palm Noir, Nocturnal Garden and Calla Code are printed and shipped on demand via Prodigi — highest print quality, lower environmental footprint. Free shipping across orders from €150."
+            "answer": "Yes. Palm Noir, Nocturnal Garden and Calla Code are printed and shipped on demand via Prodigi — highest print quality, lower environmental footprint. Free shipping on orders from €150 within Germany; EU and international rates are shown at checkout."
           }
         },
         "q6": {

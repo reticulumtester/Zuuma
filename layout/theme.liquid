@@ -14,9 +14,16 @@
     <meta name="description" content="{{ page_description | escape }}">
   {% endif %}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+  {%- comment -%}
+    Self-hosted web fonts. No data leaves to Google (DSGVO-konform, closes
+    the LG München 20.01.2022 — Az. 3 O 17493/20 — gap).
+    Preload the two primary weights so first paint uses the web fonts
+    instead of the system fallback.
+  {%- endcomment -%}
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="{{ 'cormorant-garamond-400-latin.woff2' | asset_url }}">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="{{ 'outfit-400-latin.woff2' | asset_url }}">
 
   <style>
     :root {
@@ -28,6 +35,7 @@
     }
   </style>
 
+  {{ 'fonts.css' | asset_url | stylesheet_tag }}
   {{ 'base.css' | asset_url | stylesheet_tag }}
   {{ 'theme.css' | asset_url | stylesheet_tag }}
 
