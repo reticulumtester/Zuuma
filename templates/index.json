@@ -8,7 +8,7 @@
         "headline_em": "stop noticing.",
         "description": "One bag from the bakery to the studio to dinner. Four hundred grams empty. Ten kilos without complaint. The rest of your bags can stay in the cupboard.",
         "cta_label": "Shop the Bag",
-        "cta_price": "€149",
+        "cta_price": "€90",
         "cta_link": "#bag-product",
         "secondary_label": "Where we come from",
         "secondary_link": "#about"
@@ -78,8 +78,8 @@
         "title_em": "Bag.",
         "copy": "Monday it's a laptop and a lunch. Wednesday a yoga mat, a bottle of wine, the dry-cleaning. Saturday the market — two kilos of tomatoes, bread under one arm, flowers under the other. Deep black cotton canvas, screen-printed in Berlin, signed inside. The bag stops being a thing you carry. It becomes the day you had.",
         "spec_line": "30 L · 10 kg max · 400 g · 52 × 60 cm",
-        "price_display": "€149",
-        "note": "Free shipping · Numbered · Washable to 30°",
+        "price_display": "€90",
+        "note": "Numbered · Washable to 30° · Free shipping from €150",
         "cta_label": "Add to Cart",
         "cta_link": "/cart"
       }
@@ -137,10 +137,10 @@
         "image_caption": "No. 001 · Schürze Black",
         "title": "Zuuma",
         "title_em": "Schürze.",
-        "copy": "Friday night it's four onions and a red wine stain. Sunday it's oil paint on the left thigh where you always wipe the brush. Tuesday it's flour at the elbow from a loaf that didn't rise. Heavy black canvas, long ties that wrap and knot at the front, two pockets deep enough for a phone, a pen, a wooden spoon. It learns your hands. Wash it hot, wear it harder — the apron looks better the year after you bought it than the day it arrived.",
+        "copy": "There's not much to tell you about the Zuuma Schürze that you can't see immediately. Extremely strong. Long-lasting. Washable. And — mixed with our attitude — an elegant cut that doesn't try too hard. Feel comfortable and well-dressed in your kitchen, at the grill, in the studio. The hours nobody sees are the ones you want to enjoy most.",
         "spec_line": "Heavy canvas · One size · Long front-tie · Two deep pockets",
-        "price_display": "€79",
-        "note": "Numbered · Handmade in Berlin · Hot wash, line dry",
+        "price_display": "€75",
+        "note": "Numbered · Handmade in Berlin · Hot wash · Free shipping from €150",
         "cta_label": "Add to Cart",
         "cta_link": "/cart"
       }
@@ -151,7 +151,7 @@
         "eyebrow": "Chapter 03 · The Studio",
         "title": "For the love",
         "title_em": "of the image.",
-        "standfirst": "The bag and the Schürze are the Workshop — built, tested, numbered. The Studio is what we make when nothing has to be solved. Pictures we couldn't not make, printed on paper that outlives the wall it hangs on. Some things don't need a reason — they're just what the hands do when the day is done.",
+        "standfirst": "The bag and the Schürze are the Workshop — built, tested, numbered. The Studio is what we make when nothing has to be solved. Two open editions, printed on demand in Berlin on paper that outlives the wall it hangs on. One signed, numbered edition of fifty — when they're gone, they're gone. All three are pictures we couldn't not make.",
         "link_label": "Enter the Studio →",
         "link_url": "/collections/prints"
       },
@@ -162,6 +162,7 @@
             "name": "Palm Noir",
             "category": "Open Edition · Studio",
             "sub": "A palm at 2 a.m., shot on the way home from a shoot.",
+            "price": "€200",
             "link": "/products/palm-noir"
           }
         },
@@ -171,22 +172,69 @@
             "name": "Nocturnal Garden",
             "category": "Open Edition · Studio",
             "sub": "A Berlin courtyard the week nothing bloomed. Black on black, green if you look twice.",
+            "price": "€200",
             "link": "/products/nocturnal-garden"
           }
         },
         "p-3": {
           "type": "print-limited",
           "settings": {
-            "name": "Untitled No. 3",
-            "category": "Edition of 50 · Signed",
+            "name": "Calla Code",
+            "category": "Edition of 50 · Signed & Numbered",
             "sub": "Fifty signed, numbered, and gone. One wall per country, roughly.",
-            "note": "Drops this season — first fifty names on the list get first refusal.",
-            "cta_label": "Join the Fifty",
-            "cta_link": "#"
+            "price": "€320",
+            "note": "When the fiftieth ships, Calla Code is retired. The plate is destroyed, the edition closes. No re-runs, no reprints.",
+            "cta_label": "Secure No. __",
+            "cta_link": "/products/calla-code"
           }
         }
       },
       "block_order": ["p-1", "p-2", "p-3"]
+    },
+    "charity": {
+      "type": "charity",
+      "settings": {
+        "eyebrow": "Chapter 04 · Give",
+        "headline": "No child gets",
+        "headline_em": "left behind.",
+        "standfirst": "Up to 100,000 children start the school day hungry in Berlin. Three posters, each painted by Esther Kurle. €25 including shipping — €5 of every poster goes straight to a child, redeemable at a local bakery as a pretzel, a bun, a croissant. No middleman, no overhead. From the hand that painted it to the hand that holds the breakfast.",
+        "pledge": "Kein Kind darf zurückgelassen werden.",
+        "mechanic_line_1_num": "€25",
+        "mechanic_line_1_desc": "Poster · 50 × 70 cm · Shipping included",
+        "mechanic_line_2_num": "€5",
+        "mechanic_line_2_desc": "A breakfast · Local bakery · Pretzel, bun or croissant",
+        "note": "Posters painted by Esther Kurle · Berlin Children Charity · Printed on demand"
+      },
+      "blocks": {
+        "c-1": {
+          "type": "poster",
+          "settings": {
+            "name": "Fogon",
+            "sub": "Painted by Esther Kurle · 50 × 70 cm",
+            "price": "€25",
+            "link": "/products/charity-poster-fogon"
+          }
+        },
+        "c-2": {
+          "type": "poster",
+          "settings": {
+            "name": "Corala",
+            "sub": "Painted by Esther Kurle · 50 × 70 cm",
+            "price": "€25",
+            "link": "/products/charity-poster-corala"
+          }
+        },
+        "c-3": {
+          "type": "poster",
+          "settings": {
+            "name": "Palm Noir",
+            "sub": "Painted by Esther Kurle · 50 × 70 cm",
+            "price": "€25",
+            "link": "/products/charity-poster-palm-noir"
+          }
+        }
+      },
+      "block_order": ["c-1", "c-2", "c-3"]
     },
     "faq": {
       "type": "faq",
@@ -228,10 +276,17 @@
           "type": "qa",
           "settings": {
             "question": "Are the prints shipped separately?",
-            "answer": "Yes. Palm Noir, Nocturnal Garden and the upcoming limited edition are printed and shipped on demand via Prodigi — ensuring the highest print quality and a lower environmental footprint."
+            "answer": "Yes. Palm Noir, Nocturnal Garden and Calla Code are printed and shipped on demand via Prodigi — highest print quality, lower environmental footprint. Free shipping across orders from €150."
           }
         },
         "q6": {
+          "type": "qa",
+          "settings": {
+            "question": "How does the charity poster actually work?",
+            "answer": "Each charity poster (Fogon, Corala, Palm Noir — painted by Esther Kurle, 50 × 70 cm) is €25 including shipping. €5 of every poster goes directly to a breakfast for a child in a Berlin school — redeemable at local bakeries as a pretzel, a bun or a croissant. No middleman, no overhead. Kein Kind darf zurückgelassen werden."
+          }
+        },
+        "q7": {
           "type": "qa",
           "settings": {
             "question": "Will there be more colours or editions?",
@@ -239,7 +294,7 @@
           }
         }
       },
-      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6"]
+      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6", "q7"]
     }
   },
   "order": [
@@ -251,6 +306,7 @@
     "apron-features",
     "apron-product",
     "prints",
+    "charity",
     "faq"
   ]
 }

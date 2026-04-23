@@ -1,6 +1,6 @@
 <footer class="site-footer">
   <div class="footer-top">
-    <div>
+    <div class="f-about">
       <p class="f-brand">{{ shop.name | default: 'Zuuma' }}</p>
       <p class="f-tagline">{{ settings.footer_tagline }}</p>
       <p class="f-desc">{{ section.settings.description }}</p>
@@ -22,6 +22,17 @@
       <ul>
         {% for b in section.blocks %}
           {% if b.type == 'nav_link' and b.settings.column == 'second' %}
+            <li><a href="{{ b.settings.url }}">{{ b.settings.label }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="f-col">
+      <h4>{{ section.settings.col_3_title }}</h4>
+      <ul>
+        {% for b in section.blocks %}
+          {% if b.type == 'nav_link' and b.settings.column == 'third' %}
             <li><a href="{{ b.settings.url }}">{{ b.settings.label }}</a></li>
           {% endif %}
         {% endfor %}
@@ -57,6 +68,12 @@
       "id": "col_2_title",
       "label": "Column 2 title",
       "default": "Info"
+    },
+    {
+      "type": "text",
+      "id": "col_3_title",
+      "label": "Column 3 title",
+      "default": "Rechtliches"
     }
   ],
   "blocks": [
@@ -71,8 +88,9 @@
           "id": "column",
           "label": "Column",
           "options": [
-            { "value": "first", "label": "Column 1" },
-            { "value": "second", "label": "Column 2" }
+            { "value": "first", "label": "Column 1 · Navigate" },
+            { "value": "second", "label": "Column 2 · Info" },
+            { "value": "third", "label": "Column 3 · Rechtliches" }
           ],
           "default": "first"
         }
@@ -81,15 +99,19 @@
   ],
   "default": {
     "blocks": [
-      { "type": "nav_link", "settings": { "label": "The Bag",   "url": "#bag-product", "column": "first" } },
-      { "type": "nav_link", "settings": { "label": "Schürze",   "url": "#apron-product", "column": "first" } },
-      { "type": "nav_link", "settings": { "label": "Prints",    "url": "#prints", "column": "first" } },
-      { "type": "nav_link", "settings": { "label": "About",     "url": "#about", "column": "first" } },
-      { "type": "nav_link", "settings": { "label": "FAQ",       "url": "#faq", "column": "first" } },
-      { "type": "nav_link", "settings": { "label": "Shipping & Returns", "url": "/policies/shipping-policy", "column": "second" } },
-      { "type": "nav_link", "settings": { "label": "Care Guide", "url": "#faq", "column": "second" } },
-      { "type": "nav_link", "settings": { "label": "Contact",   "url": "/pages/contact", "column": "second" } },
-      { "type": "nav_link", "settings": { "label": "Instagram", "url": "https://instagram.com", "column": "second" } }
+      { "type": "nav_link", "settings": { "label": "The Bag",    "url": "#bag-product",   "column": "first" } },
+      { "type": "nav_link", "settings": { "label": "Schürze",    "url": "#apron-product", "column": "first" } },
+      { "type": "nav_link", "settings": { "label": "Prints",     "url": "#prints",        "column": "first" } },
+      { "type": "nav_link", "settings": { "label": "Give",       "url": "#charity",       "column": "first" } },
+      { "type": "nav_link", "settings": { "label": "About",      "url": "#about",         "column": "first" } },
+      { "type": "nav_link", "settings": { "label": "FAQ",        "url": "#faq",           "column": "second" } },
+      { "type": "nav_link", "settings": { "label": "Contact",    "url": "/pages/contact", "column": "second" } },
+      { "type": "nav_link", "settings": { "label": "Instagram",  "url": "https://instagram.com", "column": "second" } },
+      { "type": "nav_link", "settings": { "label": "Impressum",         "url": "/pages/impressum",      "column": "third" } },
+      { "type": "nav_link", "settings": { "label": "AGB",               "url": "/pages/agb",            "column": "third" } },
+      { "type": "nav_link", "settings": { "label": "Datenschutz",       "url": "/pages/datenschutz",    "column": "third" } },
+      { "type": "nav_link", "settings": { "label": "Widerrufsrecht",    "url": "/pages/widerrufsrecht", "column": "third" } },
+      { "type": "nav_link", "settings": { "label": "Versand & Rückgabe", "url": "/policies/shipping-policy", "column": "third" } }
     ]
   }
 }

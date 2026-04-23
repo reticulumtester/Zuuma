@@ -1,0 +1,102 @@
+<section id="charity" data-zuuma-section="charity">
+  <div class="charity-inner">
+    <div class="charity-head reveal">
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 class="section-h">{{ section.settings.headline }}<em> {{ section.settings.headline_em }}</em></h2>
+      {% if section.settings.standfirst != blank %}
+        <p class="charity-standfirst reveal d1">{{ section.settings.standfirst }}</p>
+      {% endif %}
+    </div>
+
+    <div class="charity-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'poster' %}
+          <a class="charity-card reveal {% cycle 'd1','d2','d3' %}" href="{{ block.settings.link | default: '#' }}">
+            <div class="charity-card-img">
+              {% if block.settings.image != blank %}
+                {{ block.settings.image | image_url: width: 1000 | image_tag:
+                   sizes: '(min-width: 960px) 33vw, 100vw',
+                   widths: '400,600,900,1200',
+                   alt: block.settings.name,
+                   loading: 'lazy' }}
+              {% else %}
+                <div class="charity-card-ph" aria-hidden="true">
+                  <span>{{ block.settings.name }}</span>
+                </div>
+              {% endif %}
+            </div>
+            <div class="charity-card-info">
+              <div class="charity-card-name-row">
+                <p class="charity-card-name">{{ block.settings.name }}</p>
+                {% if block.settings.price != blank %}
+                  <p class="charity-card-price">{{ block.settings.price }}</p>
+                {% endif %}
+              </div>
+              <p class="charity-card-sub">{{ block.settings.sub }}</p>
+              <span class="charity-card-cta">Give a breakfast →</span>
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="charity-mechanic reveal d2" aria-label="How your purchase becomes a breakfast">
+      <div class="charity-mechanic-row">
+        <span class="charity-mechanic-num">{{ section.settings.mechanic_line_1_num }}</span>
+        <span class="charity-mechanic-rule" aria-hidden="true"></span>
+        <span class="charity-mechanic-desc">{{ section.settings.mechanic_line_1_desc }}</span>
+      </div>
+      <div class="charity-mechanic-row charity-mechanic-row--give">
+        <span class="charity-mechanic-num">{{ section.settings.mechanic_line_2_num }}</span>
+        <span class="charity-mechanic-rule" aria-hidden="true"></span>
+        <span class="charity-mechanic-desc">{{ section.settings.mechanic_line_2_desc }}</span>
+      </div>
+    </div>
+
+    {% if section.settings.pledge != blank %}
+      <blockquote class="charity-pledge reveal d3">"{{ section.settings.pledge }}"</blockquote>
+    {% endif %}
+
+    {% if section.settings.note != blank %}
+      <p class="charity-note reveal d3">{{ section.settings.note }}</p>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Charity",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Chapter 04 · Give" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "No child gets" },
+    { "type": "text", "id": "headline_em", "label": "Headline italic", "default": "left behind." },
+    { "type": "textarea", "id": "standfirst", "label": "Standfirst",
+      "default": "Up to 100,000 children start the school day hungry in Berlin. Three posters, each painted by Esther Kurle. €25 including shipping — €5 of every poster goes straight to a child, redeemable at a local bakery as a pretzel, a bun, a croissant. No middleman, no overhead. From the hand that painted it to the hand that holds the breakfast." },
+    { "type": "header", "content": "The €25 → €5 mechanic" },
+    { "type": "text", "id": "mechanic_line_1_num", "label": "Line 1 amount", "default": "€25" },
+    { "type": "text", "id": "mechanic_line_1_desc", "label": "Line 1 description", "default": "Poster · 50 × 70 cm · Shipping included" },
+    { "type": "text", "id": "mechanic_line_2_num", "label": "Line 2 amount", "default": "€5" },
+    { "type": "text", "id": "mechanic_line_2_desc", "label": "Line 2 description", "default": "A breakfast · Local bakery · Pretzel, bun or croissant" },
+    { "type": "header", "content": "Footer" },
+    { "type": "text", "id": "pledge", "label": "Pledge (shown as italic quote)", "default": "Kein Kind darf zurückgelassen werden." },
+    { "type": "text", "id": "note", "label": "Fine print", "default": "Posters painted by Esther Kurle · Berlin Children Charity · Printed on demand" }
+  ],
+  "blocks": [
+    {
+      "type": "poster",
+      "name": "Charity poster",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "name", "label": "Name", "default": "Fogon" },
+        { "type": "text", "id": "sub", "label": "Subtext", "default": "Painted by Esther Kurle · 50 × 70 cm" },
+        { "type": "text", "id": "price", "label": "Price display (e.g. €25)", "default": "€25" },
+        { "type": "url", "id": "link", "label": "Product link" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    { "name": "Charity", "category": "Zuuma" }
+  ]
+}
+{% endschema %}
