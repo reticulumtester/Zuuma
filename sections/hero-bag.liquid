@@ -22,12 +22,13 @@
       <div class="hero-divider" aria-hidden="true"></div>
       <p class="hero-desc reveal d2">{{ section.settings.description }}</p>
       <div class="hero-actions reveal d3">
+        {% if section.settings.cta_price != blank %}
+          <span class="hero-price" aria-label="Price">{{ section.settings.cta_price }}</span>
+        {% endif %}
         {% if section.settings.cta_label != blank %}
           <a href="{{ section.settings.cta_link }}" class="btn-primary">
             <span class="btn-primary-label">{{ section.settings.cta_label }}</span>
-            {% if section.settings.cta_price != blank %}
-              <span class="btn-primary-price">{{ section.settings.cta_price }}</span>
-            {% endif %}
+            <span class="btn-primary-arrow" aria-hidden="true">→</span>
           </a>
         {% endif %}
       </div>

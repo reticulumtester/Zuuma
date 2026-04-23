@@ -57,7 +57,12 @@
             {% endif %}
           </a>
         {% endif %}
-        <p class="p-note">{{ section.settings.note }}</p>
+
+        {%- render 'trust-row' -%}
+
+        {% if section.settings.note != blank %}
+          <p class="p-note">{{ section.settings.note }}</p>
+        {% endif %}
       </div>
     </div>
   </div>
