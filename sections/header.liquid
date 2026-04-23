@@ -6,16 +6,30 @@
         {% when 'link' %}
           <li><a href="{{ link.settings.url }}">{{ link.settings.label }}</a></li>
         {% when 'cta' %}
-          <li><a class="nav-cta" href="{{ link.settings.url }}">{{ link.settings.label }}</a></li>
+          <li>
+            <a class="nav-cta" href="{{ link.settings.url | default: routes.cart_url }}">
+              <span class="nav-cta-label">{{ link.settings.label | default: 'Cart' }}</span>
+              {% if cart and cart.item_count > 0 %}
+                <span class="nav-cta-count" aria-label="{{ cart.item_count }} items in cart">{{ cart.item_count }}</span>
+              {% endif %}
+            </a>
+          </li>
       {% endcase %}
     {% else %}
-      <li><a href="#bag-product">The Bag</a></li>
-      <li><a href="#apron-product">Schürze</a></li>
-      <li><a href="#prints">Prints</a></li>
-      <li><a href="#charity">Give</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a class="nav-cta" href="{{ routes.cart_url }}">Shop</a></li>
+      <li><a href="/#bag-product">The Bag</a></li>
+      <li><a href="/#apron-product">Schürze</a></li>
+      <li><a href="/#prints">Prints</a></li>
+      <li><a href="/#charity">Give</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li>
+        <a class="nav-cta" href="{{ routes.cart_url }}">
+          <span class="nav-cta-label">Cart</span>
+          {% if cart and cart.item_count > 0 %}
+            <span class="nav-cta-count" aria-label="{{ cart.item_count }} items in cart">{{ cart.item_count }}</span>
+          {% endif %}
+        </a>
+      </li>
     {% endfor %}
   </ul>
 </header>

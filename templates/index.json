@@ -15,7 +15,7 @@
     "bag-features": {
       "type": "bag-features",
       "settings": {
-        "eyebrow": "Chapter 01 · Anatomy",
+        "eyebrow": "Anatomy",
         "headline": "A closer",
         "headline_em": " look.",
         "subline": ""
@@ -95,7 +95,7 @@
     "apron-features": {
       "type": "apron-features",
       "settings": {
-        "eyebrow": "Chapter 02 · The Schürze",
+        "eyebrow": "The Schürze",
         "headline": "Worn indoors,",
         "headline_em": "for hours.",
         "subline": "What you put on when the door is closed and the work begins. Kitchen, studio, darkroom, workbench."
@@ -146,7 +146,7 @@
     "prints": {
       "type": "prints",
       "settings": {
-        "eyebrow": "Chapter 03 · The Studio",
+        "eyebrow": "The Studio",
         "title": "For the love",
         "title_em": "of the image.",
         "standfirst": "The bag and the Schürze are the Workshop — built, tested, numbered. The Studio is what we make when nothing has to be solved. Two open editions, printed on demand in Berlin on paper that outlives the wall it hangs on. One signed, numbered edition of fifty — when they're gone, they're gone. All three are pictures we couldn't not make.",
@@ -192,7 +192,7 @@
     "charity": {
       "type": "charity",
       "settings": {
-        "eyebrow": "Chapter 04 · Give",
+        "eyebrow": "Give",
         "headline": "No child gets",
         "headline_em": "left behind.",
         "standfirst": "Up to 100,000 children start the school day hungry in Berlin. Three posters, each painted by Esther Kurle. €25 including shipping — €5 of every poster goes straight to a child, redeemable at a local bakery as a pretzel, a bun, a croissant. No middleman, no overhead. From the hand that painted it to the hand that holds the breakfast.",
@@ -298,8 +298,8 @@
   "order": [
     "hero-bag",
     "bag-features",
-    "about",
     "bag-product",
+    "about",
     "media-statement",
     "apron-features",
     "apron-product",

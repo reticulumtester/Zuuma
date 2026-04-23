@@ -28,14 +28,28 @@
     }
     requestAnimationFrame(raf);
 
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
+    // Smooth-scroll in-page anchors. Also catches "/#foo" links (from
+    // header/footer, which use that form so they work from subpages too) —
+    // on the homepage we intercept and smooth-scroll; off-homepage we let
+    // the browser navigate to / and the hash jumps naturally after load.
+    document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(a => {
       a.addEventListener('click', e => {
         const href = a.getAttribute('href');
-        if (!href || href === '#') return;
-        const target = document.querySelector(href);
+        if (!href || href === '#' || href === '/#') return;
+
+        const isRooted = href.startsWith('/#');
+        const onHomepage = window.location.pathname === '/' || window.location.pathname === '';
+        if (isRooted && !onHomepage) return; // let the browser load home + jump
+
+        const selector = isRooted ? href.slice(1) : href;
+        const target = document.querySelector(selector);
         if (!target) return;
         e.preventDefault();
         lenis.scrollTo(target, { offset: -96, duration: 1.2 });
+        // Keep URL clean-ish on homepage for back-button sanity
+        if (isRooted && history.replaceState) {
+          history.replaceState(null, '', selector);
+        }
       });
     });
 

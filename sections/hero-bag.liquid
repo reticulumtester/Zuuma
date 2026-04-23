@@ -16,10 +16,10 @@
     </div>
 
     <div class="hero-content-side">
-      <p class="hero-eyebrow">{{ section.settings.eyebrow }}</p>
       <h1 class="hero-headline">
         {{ section.settings.headline }}<em>{{ section.settings.headline_em }}</em>
       </h1>
+      <div class="hero-divider" aria-hidden="true"></div>
       <p class="hero-desc reveal d2">{{ section.settings.description }}</p>
       <div class="hero-actions reveal d3">
         {% if section.settings.cta_label != blank %}

@@ -8,7 +8,7 @@
   --ease-hi: cubic-bezier(0.2, 0.7, 0.1, 1);
   --container: 1280px;
   --nav-h: 84px;
-  --announce-h: 38px;
+  --announce-h: 30px;
 }
 
 html { -webkit-text-size-adjust: 100%; }
