@@ -4,6 +4,26 @@
   "sections": {
     "footer": {
       "type": "footer",
+      "blocks": {
+        "nav-bag":      { "type": "nav_link", "settings": { "label": "The Bag",           "url": "#bag-product",              "column": "first"  } },
+        "nav-apron":    { "type": "nav_link", "settings": { "label": "Schürze",           "url": "#apron-product",            "column": "first"  } },
+        "nav-prints":   { "type": "nav_link", "settings": { "label": "Prints",            "url": "#prints",                   "column": "first"  } },
+        "nav-give":     { "type": "nav_link", "settings": { "label": "Give",              "url": "#charity",                  "column": "first"  } },
+        "nav-about":    { "type": "nav_link", "settings": { "label": "About",             "url": "#about",                    "column": "first"  } },
+        "info-faq":     { "type": "nav_link", "settings": { "label": "FAQ",               "url": "#faq",                      "column": "second" } },
+        "info-contact": { "type": "nav_link", "settings": { "label": "Kontakt",           "url": "mailto:info@houseofzuuma.com", "column": "second" } },
+        "info-insta":   { "type": "nav_link", "settings": { "label": "Instagram",         "url": "https://instagram.com",     "column": "second" } },
+        "legal-impr":   { "type": "nav_link", "settings": { "label": "Impressum",         "url": "/pages/impressum",          "column": "third"  } },
+        "legal-agb":    { "type": "nav_link", "settings": { "label": "AGB",               "url": "/pages/agb",                "column": "third"  } },
+        "legal-privacy":{ "type": "nav_link", "settings": { "label": "Datenschutz",       "url": "/pages/datenschutz",        "column": "third"  } },
+        "legal-withdr": { "type": "nav_link", "settings": { "label": "Widerrufsrecht",    "url": "/pages/widerruf",           "column": "third"  } },
+        "legal-ship":   { "type": "nav_link", "settings": { "label": "Versand & Rückgabe","url": "/policies/shipping-policy", "column": "third"  } }
+      },
+      "block_order": [
+        "nav-bag", "nav-apron", "nav-prints", "nav-give", "nav-about",
+        "info-faq", "info-contact", "info-insta",
+        "legal-impr", "legal-agb", "legal-privacy", "legal-withdr", "legal-ship"
+      ],
       "settings": {}
     }
   },

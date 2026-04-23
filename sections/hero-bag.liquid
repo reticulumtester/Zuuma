@@ -13,48 +13,28 @@
           <img src="{{ 'bag-01.jpg' | asset_url }}" alt="Zuuma Bag" loading="eager" fetchpriority="high">
         {% endif %}
       </div>
-      <div class="hero-number-bg" aria-hidden="true">01</div>
-      <div class="hero-frame" aria-hidden="true">
-        <span class="hero-frame-line hero-frame-line--t"></span>
-        <span class="hero-frame-line hero-frame-line--b"></span>
-        <span class="hero-frame-line hero-frame-line--l"></span>
-        <span class="hero-frame-line hero-frame-line--r"></span>
-      </div>
     </div>
 
     <div class="hero-content-side">
-      <div class="hero-chapter" aria-hidden="true">
-        <span class="hero-chapter-num">01</span>
-        <span class="hero-chapter-rule"></span>
-        <span class="hero-chapter-label">Chapter · The Bag</span>
-      </div>
-      <p class="hero-eyebrow" data-track-in>{{ section.settings.eyebrow }}</p>
+      <p class="hero-eyebrow">{{ section.settings.eyebrow }}</p>
       <h1 class="hero-headline">
         {{ section.settings.headline }}<em>{{ section.settings.headline_em }}</em>
       </h1>
-      <div class="hero-divider" data-draw-rule></div>
       <p class="hero-desc reveal d2">{{ section.settings.description }}</p>
       <div class="hero-actions reveal d3">
         {% if section.settings.cta_label != blank %}
-          <a href="{{ section.settings.cta_link }}" class="btn-primary has-glint">
+          <a href="{{ section.settings.cta_link }}" class="btn-primary">
             <span class="btn-primary-label">{{ section.settings.cta_label }}</span>
             {% if section.settings.cta_price != blank %}
               <span class="btn-primary-price">{{ section.settings.cta_price }}</span>
             {% endif %}
           </a>
         {% endif %}
-        {% if section.settings.secondary_label != blank %}
-          <a href="{{ section.settings.secondary_link }}" class="btn-link">{{ section.settings.secondary_label }}</a>
-        {% endif %}
       </div>
     </div>
 
-    <a href="#bag-features" class="hero-scroll-cue" data-scroll-cue aria-label="Scroll to explore">
-      <span class="hero-scroll-word">Scroll to Explore</span>
+    <a href="#bag-features" class="hero-scroll-cue" data-scroll-cue aria-label="Scroll">
       <span class="hero-scroll-rail"><span class="hero-scroll-dot"></span></span>
-      <svg class="hero-scroll-chev" viewBox="0 0 24 14" aria-hidden="true" focusable="false">
-        <path d="M2 2l10 10L22 2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
     </a>
   </section>
 </div>
@@ -68,12 +48,10 @@
     { "type": "text", "id": "headline", "label": "Headline", "default": "The bag you" },
     { "type": "text", "id": "headline_em", "label": "Headline italic", "default": "stop noticing." },
     { "type": "textarea", "id": "description", "label": "Description",
-      "default": "One bag from the bakery to the studio to dinner. Four hundred grams empty. Ten kilos without complaint. The rest of your bags can stay in the cupboard." },
+      "default": "One bag from the bakery to the studio to dinner. 400 g empty, 10 kg without complaint." },
     { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Shop the Bag" },
-    { "type": "text", "id": "cta_price", "label": "CTA price display", "default": "€149" },
-    { "type": "url", "id": "cta_link", "label": "CTA link" },
-    { "type": "text", "id": "secondary_label", "label": "Secondary label", "default": "Our Story" },
-    { "type": "url", "id": "secondary_link", "label": "Secondary link" }
+    { "type": "text", "id": "cta_price", "label": "CTA price display", "default": "€90" },
+    { "type": "url", "id": "cta_link", "label": "CTA link" }
   ],
   "presets": [
     { "name": "Hero — Bag", "category": "Zuuma" }

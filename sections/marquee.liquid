@@ -1,28 +1,28 @@
 {%- assign items = section.settings.items | split: '·' -%}
 <div class="marquee-strip" id="marquee-{{ section.id }}">
   <div class="marquee-track">
-    {% for i in (1..2) %}
-      {% for item in items %}
-        <span class="m-item">{{ item | strip }}</span>
+    {% for item in items %}
+      <span class="m-item">{{ item | strip }}</span>
+      {% unless forloop.last %}
         <span class="m-item" aria-hidden="true"><span class="m-dot">✦</span></span>
-      {% endfor %}
+      {% endunless %}
     {% endfor %}
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "Marquee / Announcement",
+  "name": "Announcement bar",
   "settings": [
     {
       "type": "text",
       "id": "items",
       "label": "Items (separate with ·)",
-      "default": "Made in Berlin · Handmade & Numbered · 100% Cotton Canvas · Free Shipping within Germany from €150 · Ships Worldwide"
+      "default": "Made in Berlin · Handmade & Numbered · Ships Worldwide"
     }
   ],
   "presets": [
-    { "name": "Marquee / Announcement", "category": "Zuuma" }
+    { "name": "Announcement bar", "category": "Zuuma" }
   ]
 }
 {% endschema %}

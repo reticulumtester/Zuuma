@@ -6,12 +6,10 @@
         "eyebrow": "Berlin · Handmade · Numbered",
         "headline": "The bag you",
         "headline_em": "stop noticing.",
-        "description": "One bag from the bakery to the studio to dinner. Four hundred grams empty. Ten kilos without complaint. The rest of your bags can stay in the cupboard.",
+        "description": "One bag from the bakery to the studio to dinner. 400 g empty, 10 kg without complaint.",
         "cta_label": "Shop the Bag",
         "cta_price": "€90",
-        "cta_link": "#bag-product",
-        "secondary_label": "Where we come from",
-        "secondary_link": "#about"
+        "cta_link": "#bag-product"
       }
     },
     "bag-features": {

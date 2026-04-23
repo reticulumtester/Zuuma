@@ -36,6 +36,10 @@ img, svg, video {
 }
 
 a { color: inherit; text-decoration: none; }
+
+/* Text selection — on-brand, readable on any background */
+::selection      { background: var(--accent); color: var(--black); }
+::-moz-selection { background: var(--accent); color: var(--black); }
 button {
   font: inherit;
   color: inherit;
